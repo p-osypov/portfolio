@@ -1,2 +1,1 @@
-# portfolio
-Pablo Osypov portfolio website
+# Portfolio website

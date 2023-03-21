@@ -1,0 +1,19 @@
+{
+  "name": "portfolio.loc",
+  "version": "1.0.0",
+  "description": "Portfolio website",
+  "main": "index.js",
+  "scripts": {
+    "test": "Test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/p-osypov/portfolio.git"
+  },
+  "author": "Pavlo Osypov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/p-osypov/portfolio/issues"
+  },
+  "homepage": "https://github.com/p-osypov/portfolio#readme"
+}
