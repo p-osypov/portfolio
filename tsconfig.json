@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "allowJs": true,
+    "baseUrl": "src",
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "paths": {
+      "api": ["./app/api"],
+      "api/*": ["./app/api/*"],
+      "assets/*": ["./app/assets/*"],
+      "components/*": ["./app/components/*"],
+      "constants/*": ["./app/constants/*"],
+      "context/*": ["./app/context/*"],
+      "containers/*": ["./app/containers/*"],
+      "store/*": ["./app/store/*"],
+      "utils/*": ["./app/utils/*"],
+      "test/*": ["./app/test/*"],
+      "types/*": ["./types/*"],
+      "server/*": ["./server/*"]
+    },
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": false,
+    "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitAny": false,
+    "noUnusedParameters": true,
+    "useUnknownInCatchVariables": true,
+    "noFallthroughCasesInSwitch": true,
+    "target": "ESNext",
+    "typeRoots": ["./node_modules/@types", "./src/types"]
+  },
+  "exclude": ["node_modules", "build", "src/**/coverage"],
+  "include": ["src"]
+}
