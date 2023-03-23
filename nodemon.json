@@ -1,9 +1,0 @@
-{
-  "watch": ["./build/", "./src/**/*"],
-  "ext": "html,js,json,jsx,ts,tsx",
-  "execMap": {
-    "ts": "node --require ts-node/register --require tsconfig-paths/register",
-    "tsx": "node --require ts-node/register --require tsconfig-paths/register"
-  },
-  "verbose": true
-}
