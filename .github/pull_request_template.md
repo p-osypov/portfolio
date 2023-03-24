@@ -1,10 +1,10 @@
-# 📝 Description
+### 📝 Description
 <!--Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.-->
 
 In this PR, I have added a...
 
 ---
-## 🛠️ Type of change
+### 🛠️ Type of change
 
 - [ ] Cleaning up
 - [ ] Bug fix (non-breaking change which fixes an issue)
@@ -14,7 +14,7 @@ In this PR, I have added a...
 - [ ] Instrumenting an application
 
 ---
-# 🔬 How has this been tested / or will it be tested?
+### 🔬 How has this been tested / or will it be tested?
 
 <!--Please describe the tests that you will run to verify your changes worked. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration-->
 
@@ -22,10 +22,10 @@ In this PR, I have added a...
 - [ ] After deployment
 - [ ] Running unit/e2e tests while deployment
 ---
-# 🖼️ UI screenshot/video
+### 🖼️ UI screenshot/video
 
 ---
-# 🌟 Gif to summarize my emotions (optional):
+### 🌟 Gif to summarize my emotions (optional):
 
 <!-- FireFox https://addons.mozilla.org/en-US/firefox/addon/gifs-for-github/ -->
 <!-- Chrome https://chrome.google.com/webstore/detail/gifs-for-github/dkgjnpbipbdaoaadbdhpiokaemhlphep?hl=en -->
