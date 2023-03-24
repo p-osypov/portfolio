@@ -1,41 +1,24 @@
 {
   "compilerOptions": {
-    "skipLibCheck": true,
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "baseUrl": "src",
-    "esModuleInterop": true,
-    "jsx": "react-jsx",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "paths": {
-      "api": ["./app/api"],
-      "api/*": ["./app/api/*"],
-      "assets/*": ["./app/assets/*"],
-      "components/*": ["./app/components/*"],
-      "constants/*": ["./app/constants/*"],
-      "context/*": ["./app/context/*"],
-      "containers/*": ["./app/containers/*"],
-      "store/*": ["./app/store/*"],
-      "utils/*": ["./app/utils/*"],
-      "test/*": ["./app/test/*"],
-      "types/*": ["./types/*"],
-      "server/*": ["./server/*"]
-    },
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
-    "sourceMap": true,
-    "strict": false,
-    "strictNullChecks": true,
-    "strictBindCallApply": true,
-    "strictFunctionTypes": true,
-    "strictPropertyInitialization": true,
-    "noImplicitAny": false,
-    "noUnusedParameters": true,
-    "useUnknownInCatchVariables": true,
-    "noFallthroughCasesInSwitch": true,
-    "target": "ESNext",
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "exclude": ["node_modules", "build", "src/**/coverage"],
-  "include": ["src"]
+  "include": [
+    "next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
