@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/p-osypov/portfolio#readme",
   "scripts": {
-    "start": "next dev",
+    "start": "node server.js",
     "build": "next build",
     "production": "next start",
     "lint": "next lint",

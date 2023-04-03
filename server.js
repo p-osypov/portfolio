@@ -26,7 +26,7 @@ app.prepare().then(() => {
         console.log(`===`.repeat(10));
         console.groupEnd();
         try {
-            const { data } = await axios.listEngines();
+            const { data } = await openai.listEngines();
             console.warn(data.data.map(({ id }) => id));
         }catch (e) {
             console.error(e);
