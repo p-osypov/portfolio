@@ -1,7 +1,12 @@
 import Head from 'next/head'
 import { Component } from '@/modules/index/styles';
+import {sendMessageToChatGPT} from "../../lib/chatGPT";
 
 function Home() {
+    const onClick = async () => {
+        const response = await sendMessageToChatGPT('Hello');
+        console.warn(response);
+    }
   return (
     <>
       <Head>
@@ -12,7 +17,7 @@ function Home() {
       </Head>
       <Component.Main>
         <Component.Center>
-          <Component.PowerButton>
+          <Component.PowerButton onClick={onClick}>
               <svg fill="white" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280">
                   <path d="M140,0C62.804,0,0,62.804,0,140s62.804,140,140,140s140-62.804,140-140S217.196,0,140,0z M140,250
 		c-60.654,0-110-49.346-110-110S79.346,30,140,30s110,49.346,110,110S200.654,250,140,250z"/>
