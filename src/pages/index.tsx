@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import { Component } from '@/modules/index/styles';
-import {sendMessageToChatGPT} from "../../lib/chatGPT";
+import {sendMessageToChatGPT} from "../server/chatGPT";
+import axios from "axios";
 
 function Home() {
     const onClick = async () => {
-        const response = await sendMessageToChatGPT('Hello');
+        const response = await axios.post('http://localhost:3000/api/gpt', {});
         console.warn(response);
     }
   return (
