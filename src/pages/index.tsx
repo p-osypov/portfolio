@@ -14,7 +14,7 @@ function Home() {
         <meta name="description" content="Portfolio - Pavlo Osypov, Senior web developer" />
       </Head>
       <Component.Main>
-        <Component.Center>
+        <Component.PowerButtonWrapper>
           <Component.PowerButton onClick={onClick}>
               <svg fill="white" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280">
                   <path d="M140,0C62.804,0,0,62.804,0,140s62.804,140,140,140s140-62.804,140-140S217.196,0,140,0z M140,250
@@ -23,7 +23,7 @@ function Home() {
 		C155,81.716,148.284,75,140,75z"/>
               </svg>
           </Component.PowerButton>
-        </Component.Center>
+        </Component.PowerButtonWrapper>
         <Component.Title>Make this happen!</Component.Title>
       </Component.Main>
     </>

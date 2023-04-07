@@ -5,15 +5,19 @@ export const Component = {
       display: flex;
       flex-wrap: wrap;
       align-content: center;
-      min-height: 100vh;
-    `,
-    Center: styled.div`
-      display: flex;
       justify-content: center;
-      align-items: center;
       position: relative;
-      flex-basis: 100%;
+      min-height: 100vh;
       padding: var(--spacing);
+      &::before,
+      &::after {
+        content: '';
+        left: 50%;
+        top: 50%;
+        position: absolute;
+        filter: blur(45px);
+        transform: translate(-50%, -50%);
+      }
       &::before {
         background: linear-gradient(
                 to bottom right,
@@ -24,29 +28,21 @@ export const Component = {
         border-radius: 50%;
         width: 480px;
         height: 360px;
-        margin-left: -400px;
+        margin-left: -240px;
       }
       &::after {
         background: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
         width: 240px;
         height: 180px;
         z-index: -1;
+        top: 40%;
+        left: 55%;
       }
-      &::before,
-      &::after {
-        content: '';
-        left: 50%;
-        position: absolute;
-        filter: blur(45px);
-        transform: translateZ(0);
-      }
-      @media (max-width: 700px) {
-        padding: 8rem 0 6rem;
-        &::before {
-          transform: none;
-          height: 300px;
-        }
-      }
+    `,
+    PowerButtonWrapper: styled.div`
+      display: flex;
+      justify-content: center;
+      flex-basis: 100%;
     `,
     PowerButton: styled.div`
       position: relative;
@@ -115,5 +111,6 @@ export const Component = {
     Title: styled.h1`
       flex-basis: 100%;
       text-align: center;
+      margin-top: calc(var(--spacing) * 2);
     `
 }
