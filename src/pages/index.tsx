@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { Component } from '@/modules/index/styles';
-import {sendMessageToChatGPT} from "../server/chatGPT";
 import axios from "axios";
 
 function Home() {
@@ -13,8 +12,6 @@ function Home() {
       <Head>
         <title>Portfolio - Pavlo Osypov, Senior web developer</title>
         <meta name="description" content="Portfolio - Pavlo Osypov, Senior web developer" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Component.Main>
         <Component.Center>
@@ -27,6 +24,7 @@ function Home() {
               </svg>
           </Component.PowerButton>
         </Component.Center>
+        <Component.Title>Make this happen!</Component.Title>
       </Component.Main>
     </>
   )
