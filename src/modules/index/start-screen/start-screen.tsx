@@ -1,27 +1,44 @@
-import {Component} from "@/modules/index/start-screen/styles";
-import {useState} from "react";
+import { Component } from '@/modules/index/start-screen/styles';
+import { useState } from 'react';
+import { TypeAnimation } from 'react-type-animation';
+import IconPowerButton from '@/assets/icons/jsx/power-button';
 
 interface Props {
-    onClickButton: () => void;
+  onClickButton: () => void;
 }
-function StartScreen({onClickButton}: Props){
-    const [clicked, setClicked] = useState<boolean>(false);
-    const onClick = () => {
-        setClicked(true);
-        onClickButton();
-    }
-    return <Component.Container>
-        <Component.PowerButtonWrapper>
-            <Component.PowerButton onClick={onClick} $fastAnimation={clicked}>
-                <svg fill="white" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280">
-                    <path d="M140,0C62.804,0,0,62.804,0,140s62.804,140,140,140s140-62.804,140-140S217.196,0,140,0z M140,250
-		c-60.654,0-110-49.346-110-110S79.346,30,140,30s110,49.346,110,110S200.654,250,140,250z"/>
-                    <path d="M140,75c-8.284,0-15,6.716-15,15v100c0,8.284,6.716,15,15,15c8.284,0,15-6.716,15-15V90
-		C155,81.716,148.284,75,140,75z"/>
-                </svg>
-            </Component.PowerButton>
-        </Component.PowerButtonWrapper>
-        <Component.Title>Make this happen!</Component.Title>
+function StartScreen({ onClickButton }: Props) {
+  const [clicked, setClicked] = useState<boolean>(false);
+  const typedText = [
+    'Make',
+    1000, // Waits 1s
+    'this',
+    2000, // Waits 2s
+    'Make this happen!',
+    5000, // Waits 5s
+    '...', // Deletes all the characters
+    500, // Waits 0.5s
+  ];
+  const onClick = () => {
+    setClicked(true);
+    onClickButton();
+  };
+  return (
+    <Component.Container>
+      <Component.PowerButtonWrapper>
+        <Component.PowerButton onClick={onClick} $fastAnimation={clicked}>
+          <IconPowerButton />
+        </Component.PowerButton>
+      </Component.PowerButtonWrapper>
+      <Component.Title>
+        <TypeAnimation
+          sequence={typedText}
+          wrapper="p"
+          cursor={true}
+          repeat={Infinity}
+        />
+        {/*Make this happen!*/}
+      </Component.Title>
     </Component.Container>
+  );
 }
 export default StartScreen;

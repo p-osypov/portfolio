@@ -3,6 +3,8 @@
   --border-radius: 12px;
   --font-mono: 'Source Code Pro', monospace;
   --spacing: 16px;
+
+  --color-matrix: #00FF41;
 }
 
 @media (prefers-color-scheme: dark) {
