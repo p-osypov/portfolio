@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TypeAnimation } from 'react-type-animation';
 
 export const Component = {
   Container: styled.div`
@@ -78,13 +79,12 @@ export const Component = {
       height: 100%;
     }
   `,
-  Title: styled.h1`
+  Title: styled(TypeAnimation)`
     flex-basis: 100%;
     text-align: center;
     margin-top: calc(var(--spacing) * 2);
-    & > p::after {
-      content: '█';
-      //color: #00FF41;
+    &::after {
+      content: '█' !important;
     }
   `,
 };

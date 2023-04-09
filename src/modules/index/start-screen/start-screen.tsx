@@ -2,42 +2,29 @@ import { Component } from '@/modules/index/start-screen/styles';
 import { useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import IconPowerButton from '@/assets/icons/jsx/power-button';
+import { useStartScreenLogic } from '@/modules/index/start-screen/hooks';
 
-interface Props {
+export interface PropsStartScreen {
   onClickButton: () => void;
 }
-function StartScreen({ onClickButton }: Props) {
-  const [clicked, setClicked] = useState<boolean>(false);
-  const typedText = [
-    'Make',
-    1000, // Waits 1s
-    'this',
-    2000, // Waits 2s
-    'Make this happen!',
-    5000, // Waits 5s
-    '...', // Deletes all the characters
-    500, // Waits 0.5s
-  ];
-  const onClick = () => {
-    setClicked(true);
-    onClickButton();
-  };
+function StartScreen(props: PropsStartScreen) {
+  const { onClickStartButton, clicked, typedText } = useStartScreenLogic(props);
   return (
     <Component.Container>
       <Component.PowerButtonWrapper>
-        <Component.PowerButton onClick={onClick} $fastAnimation={clicked}>
+        <Component.PowerButton
+          onClick={onClickStartButton}
+          $fastAnimation={clicked}
+        >
           <IconPowerButton />
         </Component.PowerButton>
       </Component.PowerButtonWrapper>
-      <Component.Title>
-        <TypeAnimation
-          sequence={typedText}
-          wrapper="p"
-          cursor={true}
-          repeat={Infinity}
-        />
-        {/*Make this happen!*/}
-      </Component.Title>
+      <Component.Title
+        sequence={typedText}
+        wrapper="h1"
+        cursor={true}
+        repeat={Infinity}
+      />
     </Component.Container>
   );
 }
