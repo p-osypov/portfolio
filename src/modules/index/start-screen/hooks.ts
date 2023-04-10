@@ -13,12 +13,9 @@ export const useStartScreenLogic = ({ onClickButton }: PropsStartScreen) => {
     '...', // Deletes all the characters
     500, // Waits 0.5s
   ];
-  const onClickStartButton = useCallback(
-    () => {
-      setClicked(true);
-      onClickButton();
-    },
-    [onClickButton]
-  );
+  const onClickStartButton = useCallback(() => {
+    setClicked(true);
+    onClickButton();
+  }, [onClickButton]);
   return { clicked, typedText, onClickStartButton };
 };
