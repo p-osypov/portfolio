@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { TypeAnimation } from 'react-type-animation';
 
 export const Component = {
   Container: styled.div`
@@ -14,7 +13,7 @@ export const Component = {
     justify-content: center;
     flex-basis: 100%;
   `,
-  PowerButton: styled.div<{ $fastAnimation: boolean }>`
+  PowerButton: styled.div<{ $fastBorderAnimation: boolean }>`
     position: relative;
     display: flex;
     justify-content: center;
@@ -46,8 +45,8 @@ export const Component = {
       z-index: -1;
     }
     &::before {
-      animation: ${(p) => (p.$fastAnimation ? '0.5s' : '4s')} rotate linear
-        infinite;
+      animation: ${(p) => (p.$fastBorderAnimation ? '0.5s' : '4s')} rotate
+        linear infinite;
       width: 200%;
       height: 200%;
       background: conic-gradient(
@@ -79,11 +78,11 @@ export const Component = {
       height: 100%;
     }
   `,
-  Title: styled(TypeAnimation)`
+  Title: styled.h1`
     flex-basis: 100%;
     text-align: center;
     margin-top: calc(var(--spacing) * 2);
-    &::after {
+    & > span::after {
       content: '█' !important;
     }
   `,

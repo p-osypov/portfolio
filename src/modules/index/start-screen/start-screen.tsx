@@ -1,30 +1,34 @@
 import { Component } from '@/modules/index/start-screen/styles';
-import { useState } from 'react';
-import { TypeAnimation } from 'react-type-animation';
 import IconPowerButton from '@/assets/icons/jsx/power-button';
 import { useStartScreenLogic } from '@/modules/index/start-screen/hooks';
-
+import { TypeAnimation } from 'react-type-animation';
 export interface PropsStartScreen {
-  onClickButton: () => void;
+  onClickButton: () => Promise<void>;
 }
 function StartScreen(props: PropsStartScreen) {
-  const { onClickStartButton, clicked, typedText } = useStartScreenLogic(props);
+  const { onClickStartButton, powerButtonClicked, typedText, systemStarted } =
+    useStartScreenLogic(props);
   return (
     <Component.Container>
-      <Component.PowerButtonWrapper>
+      <Component.PowerButtonWrapper
+        className={`animate__animated ${
+          systemStarted ? 'animate__backOutUp' : ''
+        }`}
+      >
         <Component.PowerButton
           onClick={onClickStartButton}
-          $fastAnimation={clicked}
+          $fastBorderAnimation={powerButtonClicked}
         >
           <IconPowerButton />
         </Component.PowerButton>
       </Component.PowerButtonWrapper>
       <Component.Title
-        sequence={typedText}
-        wrapper="h1"
-        cursor={true}
-        repeat={Infinity}
-      />
+        className={`animate__animated ${
+          systemStarted ? 'animate__flipOutX' : ''
+        }`}
+      >
+        <TypeAnimation sequence={typedText} cursor={true} repeat={Infinity} />
+      </Component.Title>
     </Component.Container>
   );
 }

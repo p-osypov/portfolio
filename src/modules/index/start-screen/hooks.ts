@@ -2,7 +2,8 @@ import { useState, useCallback } from 'react';
 import { PropsStartScreen } from '@/modules/index/start-screen/start-screen';
 
 export const useStartScreenLogic = ({ onClickButton }: PropsStartScreen) => {
-  const [clicked, setClicked] = useState<boolean>(false);
+  const [powerButtonClicked, setPowerButtonClicked] = useState<boolean>(false);
+  const [systemStarted, setSystemStarted] = useState<boolean>(false);
   const typedText = [
     'Make',
     1000, // Waits 1s
@@ -14,8 +15,11 @@ export const useStartScreenLogic = ({ onClickButton }: PropsStartScreen) => {
     500, // Waits 0.5s
   ];
   const onClickStartButton = useCallback(() => {
-    setClicked(true);
-    onClickButton();
+    setPowerButtonClicked(true);
+    onClickButton().then(() => {
+      setSystemStarted(true);
+    });
   }, [onClickButton]);
-  return { clicked, typedText, onClickStartButton };
+
+  return { powerButtonClicked, typedText, onClickStartButton, systemStarted };
 };
