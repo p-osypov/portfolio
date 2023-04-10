@@ -14,7 +14,7 @@ export const useStartScreenLogic = ({ onClickButton }: PropsStartScreen) => {
     500, // Waits 0.5s
   ];
   const onClickStartButton = useCallback(
-    () => () => {
+    () => {
       setClicked(true);
       onClickButton();
     },
