@@ -8,6 +8,63 @@ export const Component = {
     justify-content: center;
     min-height: 100vh;
   `,
+  Cloud: styled.div`
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    &::before,
+    &::after {
+      content: '';
+      left: 50%;
+      top: 50%;
+      position: absolute;
+      filter: blur(45px);
+      transform: translate(-50%, -50%);
+    }
+    &::before {
+      background: linear-gradient(
+        to bottom right,
+        rgba(1, 65, 255, 0),
+        rgba(1, 65, 255, 0),
+        rgba(1, 65, 255, 0.3)
+      );
+      border-radius: 50%;
+      width: 480px;
+      height: 360px;
+      margin-left: -240px;
+    }
+    &::after {
+      background: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
+      width: 240px;
+      height: 180px;
+      z-index: -1;
+      top: 40%;
+      left: 55%;
+    }
+  `,
+  Gates: styled.div<{ $open: boolean }>`
+    &::before,
+    &::after {
+      content: '';
+      position: fixed;
+      z-index: -1;
+      width: 100vw;
+      height: 50vh;
+      left: 0;
+      background: linear-gradient(to bottom, transparent, rgb(0, 0, 0))
+        rgb(0, 0, 0);
+      transition: ${({ $open }) => ($open ? '0.5s ease-in-out' : 'initial')};
+      transition-delay: 0.5s;
+    }
+    &::before {
+      top: 0;
+      transform: translateY(${({ $open }) => ($open ? '-100%' : '0')});
+    }
+    &::after {
+      bottom: 0;
+      transform: translateY(${({ $open }) => ($open ? '100%' : '0')});
+    }
+  `,
   PowerButtonWrapper: styled.div`
     display: flex;
     justify-content: center;

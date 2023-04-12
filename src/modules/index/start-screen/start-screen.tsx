@@ -10,9 +10,15 @@ function StartScreen(props: PropsStartScreen) {
     useStartScreenLogic(props);
   return (
     <Component.Container>
+      <Component.Gates $open={systemStarted} />
+      <Component.Cloud
+        className={`animate__animated ${
+          systemStarted ? 'animate__zoomOut' : ''
+        }`}
+      />
       <Component.PowerButtonWrapper
         className={`animate__animated ${
-          systemStarted ? 'animate__backOutUp' : ''
+          systemStarted ? 'animate__backOutRight' : ''
         }`}
       >
         <Component.PowerButton
@@ -24,7 +30,7 @@ function StartScreen(props: PropsStartScreen) {
       </Component.PowerButtonWrapper>
       <Component.Title
         className={`animate__animated ${
-          systemStarted ? 'animate__flipOutX' : ''
+          systemStarted ? 'animate__backOutLeft' : ''
         }`}
       >
         <TypeAnimation sequence={typedText} cursor={true} repeat={Infinity} />
