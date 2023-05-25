@@ -36,7 +36,8 @@
     "react-type-animation": "^3.0.1",
     "socket.io": "^4.6.1",
     "socket.io-client": "^4.6.1",
-    "styled-components": "^5.3.9"
+    "styled-components": "^5.3.9",
+    "use-local-storage": "^2.3.6"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",

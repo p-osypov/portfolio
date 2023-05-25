@@ -1,13 +1,11 @@
 import Head from 'next/head';
-import { Component } from '@/modules/index/styles';
-import axios from 'axios';
-import StartScreen from '@/modules/index/start-screen';
+import { Component } from '@/modules/home-page/styles';
+import StartScreen from '@/modules/home-page/start-screen';
+import { useHomePageLogic } from '@/modules/home-page/hooks';
+import ChatWindow from '@/modules/home-page/chat-window';
 
 function Home() {
-  const onClick = async () => {
-    const response = await axios.post('http://localhost:3000/api/gpt', {});
-    console.warn(response);
-  };
+  const { systemIsReady, onClickPowerButton } = useHomePageLogic();
   return (
     <>
       <Head>
@@ -18,7 +16,8 @@ function Home() {
         />
       </Head>
       <Component.Main>
-        <StartScreen onClickButton={onClick} />
+        {!systemIsReady && <StartScreen onClickButton={onClickPowerButton} />}
+        {systemIsReady && <ChatWindow />}
       </Component.Main>
     </>
   );

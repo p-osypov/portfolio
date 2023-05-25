@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { PropsStartScreen } from '@/modules/index/start-screen/start-screen';
+import { PropsStartScreen } from '@/modules/home-page/start-screen/start-screen';
 
 export const useStartScreenLogic = ({ onClickButton }: PropsStartScreen) => {
   const [powerButtonClicked, setPowerButtonClicked] = useState<boolean>(false);
