@@ -1,6 +1,9 @@
 import axios from 'axios';
+import { TConversation } from '@/server/types';
 
-export async function sendMessageToChatGPT(prompt: string): Promise<string> {
+export async function sendMessageToChatGPT(
+  messages: TConversation
+): Promise<string> {
   const API_URL = 'https://api.openai.com/v1/chat/completions';
 
   const headers = {
@@ -12,13 +15,14 @@ export async function sendMessageToChatGPT(prompt: string): Promise<string> {
     max_tokens: 100,
     model: 'gpt-3.5-turbo',
     temperature: 0,
-    messages: [{ role: 'user', content: 'Say this is a test!' }],
+    messages,
   };
 
   try {
     const response = await axios.post(API_URL, payload, { headers });
-    return response.data.choices[0].message.content;
+    return response.data.choices[0].message;
   } catch (error) {
-    return 'Error: Unable to process your message';
+    // @ts-ignore
+    return error.response?.data?.message;
   }
 }

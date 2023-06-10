@@ -1,4 +1,4 @@
-import { Component } from '@/modules/home-page/start-screen/styles';
+import { Component } from '@/modules/home-page/start-screen/start-screen.styles';
 import IconPowerButton from '@/assets/icons/jsx/power-button';
 import { useStartScreenLogic } from '@/modules/home-page/start-screen/hooks';
 import { TypeAnimation } from 'react-type-animation';

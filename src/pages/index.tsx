@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Component } from '@/modules/home-page/styles';
+import { Component } from '@/modules/home-page/home-page.styles';
 import StartScreen from '@/modules/home-page/start-screen';
 import { useHomePageLogic } from '@/modules/home-page/hooks';
 import ChatWindow from '@/modules/home-page/chat-window';
@@ -16,8 +16,8 @@ function Home() {
         />
       </Head>
       <Component.Main>
-        {!systemIsReady && <StartScreen onClickButton={onClickPowerButton} />}
-        {systemIsReady && <ChatWindow />}
+        {systemIsReady && <StartScreen onClickButton={onClickPowerButton} />}
+        {!systemIsReady && <ChatWindow />}
       </Component.Main>
     </>
   );
