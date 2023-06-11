@@ -41,9 +41,10 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
   }, []);
 
   useEffect(() => {
-    if (chatHistoryRef.current) {
-      chatHistoryRef.current.scrollTop = chatHistoryRef.current.scrollHeight;
-    }
+    chatHistoryRef?.current?.scrollTo({
+      top: chatHistoryRef.current.scrollHeight,
+      behavior: 'smooth',
+    });
   }, [conversation]);
 
   return {

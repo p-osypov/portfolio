@@ -9,22 +9,25 @@ export const Component = {
   `,
   AvatarContainer: styled.div`
     height: calc(100vh - 76px - calc(var(--spacing) * 3));
-    overflow: auto;
     padding: calc(var(--spacing) * 2);
+    padding-bottom: 0;
   `,
   ChatHistory: styled.div`
-    max-height: 100%;
+    height: 100%;
+    overflow: auto;
     max-width: 768px;
     margin: 0 auto;
   `,
   ChatMessage: styled.p<{ $isUser: boolean }>`
     display: flex;
     align-items: flex-start;
-    margin-bottom: var(--spacing);
-    padding-bottom: var(--spacing);
-    border-bottom: 1px dashed #bfcfff;
     gap: var(--spacing);
     color: ${({ $isUser }) => ($isUser ? '#c5e0ff' : 'white')};
+    &:not(:last-child) {
+      margin-bottom: var(--spacing);
+      padding-bottom: var(--spacing);
+      border-bottom: 1px dashed #bfcfff;
+    }
   `,
   ChatMessageRole: styled.span<{ $isUser: boolean }>`
     display: flex;
