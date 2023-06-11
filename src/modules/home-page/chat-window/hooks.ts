@@ -1,7 +1,7 @@
 import React, { KeyboardEventHandler, useEffect, useState } from 'react';
 import { TUseChatWindowLogic } from '@/modules/home-page/chat-window/types';
 import axios from 'axios';
-import { TConversation } from '@/server/types';
+import { TConversation, TMessage } from '@/server/types';
 
 export const useChatWindowLogic = (): TUseChatWindowLogic => {
   const [value, setValue] = useState('');
@@ -15,13 +15,14 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
   };
 
   const sendMessage = async (content: string) => {
+    const userData: TMessage = { role: 'user', content };
     setValue(() => '');
+    setConversation((prevState) => [...prevState, userData]);
     setShowConversationLoading(true);
-    const userData = { role: 'user', content };
     const reqData = [...conversation, userData];
     const { data } = await axios.post('/api/gpt', { conversation: reqData });
     setConversation((prevState) => {
-      const newConversation = [...prevState, userData, data];
+      const newConversation = [...prevState, data];
       localStorage.setItem('conversation', JSON.stringify(newConversation));
       return newConversation;
     });
@@ -41,10 +42,12 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
   }, []);
 
   useEffect(() => {
-    chatHistoryRef?.current?.scrollTo({
-      top: chatHistoryRef.current.scrollHeight,
-      behavior: 'smooth',
-    });
+    setTimeout(() => {
+      chatHistoryRef.current?.scrollTo({
+        top: chatHistoryRef.current.scrollHeight,
+        behavior: 'smooth',
+      });
+    }, 100); // delay of 0ms, just to push the operation to the end of the event queue
   }, [conversation]);
 
   return {
