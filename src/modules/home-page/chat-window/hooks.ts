@@ -6,22 +6,26 @@ import { TConversation } from '@/server/types';
 export const useChatWindowLogic = (): TUseChatWindowLogic => {
   const [value, setValue] = useState('');
   const inputRef = React.useRef<HTMLTextAreaElement>(null);
+  const chatHistoryRef = React.useRef<HTMLDivElement>(null);
   const [conversation, setConversation] = useState<TConversation>([]);
-
+  const [showConversationLoading, setShowConversationLoading] =
+    useState<boolean>(false);
   const onInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value);
   };
 
   const sendMessage = async (content: string) => {
+    setValue(() => '');
+    setShowConversationLoading(true);
     const userData = { role: 'user', content };
     const reqData = [...conversation, userData];
     const { data } = await axios.post('/api/gpt', { conversation: reqData });
-    setValue(() => '');
     setConversation((prevState) => {
       const newConversation = [...prevState, userData, data];
       localStorage.setItem('conversation', JSON.stringify(newConversation));
       return newConversation;
     });
+    setShowConversationLoading(false);
   };
 
   const onEnterPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -36,11 +40,19 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
     setConversation(JSON.parse(localStorage.getItem('conversation') || '[]'));
   }, []);
 
+  useEffect(() => {
+    if (chatHistoryRef.current) {
+      chatHistoryRef.current.scrollTop = chatHistoryRef.current.scrollHeight;
+    }
+  }, [conversation]);
+
   return {
     value,
     inputRef,
     onInput,
     conversation,
     onEnterPress,
+    showConversationLoading,
+    chatHistoryRef,
   };
 };
