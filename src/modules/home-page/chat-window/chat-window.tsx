@@ -1,5 +1,6 @@
 import { Component } from './chat-window.styles';
 import { useChatWindowLogic } from '@/modules/home-page/chat-window/hooks';
+import Loading from '@/components/loading';
 
 function ChatWindow() {
   const {
@@ -31,14 +32,8 @@ function ChatWindow() {
         </Component.ChatHistory>
       </Component.AvatarContainer>
       <Component.ChatContainer>
-        {showConversationLoading && (
-          <Component.InputLoading>
-            <i />
-            <i />
-            <i />
-          </Component.InputLoading>
-        )}
-        <Component.InputWrapper>
+        {showConversationLoading && <Loading />}
+        <Component.InputContainer>
           <Component.Input
             placeholder="Type your prompt here..."
             value={value}
@@ -46,7 +41,7 @@ function ChatWindow() {
             onKeyDown={onEnterPress}
             ref={inputRef}
           />
-        </Component.InputWrapper>
+        </Component.InputContainer>
       </Component.ChatContainer>
     </Component.Container>
   );

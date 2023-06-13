@@ -40,7 +40,7 @@ export const Component = {
   `,
   ChatContainer: styled.div`
     height: max-content;
-    width: 100vw;
+    flex: 100%;
     bottom: 0;
     left: 0;
     padding: calc(var(--spacing) * 2);
@@ -50,14 +50,13 @@ export const Component = {
     justify-content: center;
     gap: var(--spacing);
   `,
-  InputWrapper: styled.div`
+  InputContainer: styled.div`
     width: 100%;
     flex-basis: 100%;
-    height: 50px;
   `,
   Input: styled.textarea`
     display: block;
-    flex: 0 1 100%;
+    flex: 100%;
     background-color: #0c162d;
     border: 1px solid #202637;
     border-radius: 6px;
@@ -69,38 +68,6 @@ export const Component = {
     margin: 0 auto;
     &::-webkit-input-placeholder {
       color: #8193b2;
-    }
-  `,
-  InputLoading: styled.i`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    i {
-      width: 10px;
-      height: 10px;
-      margin: 0 2px;
-      background: var(--color-matrix);
-      animation: loading 1s infinite;
-      &:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      &:nth-child(3) {
-        animation-delay: 0.4s;
-      }
-    }
-    @keyframes loading {
-      0% {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      50% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      100% {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
     }
   `,
 };
