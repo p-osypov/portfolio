@@ -1,0 +1,2 @@
+export OPEN_AI_API_KEY="****"
+export PORT=3000
