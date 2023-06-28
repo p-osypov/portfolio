@@ -5,18 +5,20 @@ export const Component = {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 100vh;
+    height: 100vh;
   `,
-  AvatarContainer: styled.div`
-    height: calc(100vh - 76px - calc(var(--spacing) * 3));
+  CharAIContainer: styled.div`
     padding: calc(var(--spacing) * 2);
     padding-bottom: 0;
+    flex: 1 1 auto;
+    display: flex;
+    overflow: hidden;
   `,
   ChatHistory: styled.div`
-    height: 100%;
-    overflow: auto;
     max-width: 768px;
     margin: 0 auto;
+    overflow: auto;
+    flex: 1 1 auto;
   `,
   ChatMessage: styled.p<{ $isUser: boolean }>`
     display: flex;
@@ -38,31 +40,33 @@ export const Component = {
     min-width: 100px;
     max-width: 100px;
   `,
-  ChatContainer: styled.div`
+  ChatUserContainer: styled.div`
     height: max-content;
-    flex: 100%;
     bottom: 0;
     left: 0;
     padding: calc(var(--spacing) * 2);
     display: flex;
     align-items: flex-end;
     flex-wrap: wrap;
+    flex-shrink: 0;
     justify-content: center;
     gap: var(--spacing);
   `,
   InputContainer: styled.div`
     width: 100%;
-    flex-basis: 100%;
+    flex: 100%;
+    max-height: max-content;
   `,
   Input: styled.textarea`
     display: block;
-    flex: 100%;
     background-color: #0c162d;
     border: 1px solid #202637;
     border-radius: 6px;
     padding: calc(var(--spacing) * 2);
-    height: 50px;
+    line-height: 1;
+    font-size: 16px;
     width: 100%;
+    max-height: 112px;
     resize: none;
     max-width: 768px;
     margin: 0 auto;

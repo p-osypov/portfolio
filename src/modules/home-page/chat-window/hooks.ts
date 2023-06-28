@@ -50,6 +50,12 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
     }, 100); // delay of 0ms, just to push the operation to the end of the event queue
   }, [conversation]);
 
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.style.height = 'auto';
+      inputRef.current.style.height = `${inputRef.current.scrollHeight}px`;
+    }
+  }, [value]);
   return {
     value,
     inputRef,

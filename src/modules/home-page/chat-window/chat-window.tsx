@@ -14,7 +14,7 @@ function ChatWindow() {
   } = useChatWindowLogic();
   return (
     <Component.Container>
-      <Component.AvatarContainer>
+      <Component.CharAIContainer>
         <Component.ChatHistory ref={chatHistoryRef}>
           {conversation.map(({ role, content }, index) => {
             return (
@@ -30,8 +30,8 @@ function ChatWindow() {
             );
           })}
         </Component.ChatHistory>
-      </Component.AvatarContainer>
-      <Component.ChatContainer>
+      </Component.CharAIContainer>
+      <Component.ChatUserContainer>
         {showConversationLoading && <Loading />}
         <Component.InputContainer>
           <Component.Input
@@ -39,10 +39,11 @@ function ChatWindow() {
             value={value}
             onInput={onInput}
             onKeyDown={onEnterPress}
+            rows={1}
             ref={inputRef}
           />
         </Component.InputContainer>
-      </Component.ChatContainer>
+      </Component.ChatUserContainer>
     </Component.Container>
   );
 }
