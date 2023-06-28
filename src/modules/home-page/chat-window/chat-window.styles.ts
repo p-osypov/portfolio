@@ -45,7 +45,8 @@ export const Component = {
     align-items: flex-start;
     gap: var(--spacing);
     color: ${({ $isUser }) => ($isUser ? '#c5e0ff' : 'white')};
-    &:not(:last-child) {
+    &:not(:last-child),
+    &:first-child {
       margin-bottom: var(--spacing);
       padding-bottom: var(--spacing);
       border-bottom: 1px dashed #bfcfff;

@@ -59,11 +59,9 @@ function ChatWindow() {
             rows={1}
             ref={inputRef}
           />
-          {value && (
-            <Button onClick={onClickSendBtn} className={'btn'}>
-              <IconSend />
-            </Button>
-          )}
+          <Button onClick={onClickSendBtn} className={'btn'} disabled={!value}>
+            <IconSend />
+          </Button>
         </Component.InputContainer>
       </Component.ChatUserContainer>
     </Component.Container>

@@ -19,14 +19,14 @@ export const Component = {
       cursor: not-allowed;
       opacity: 0.5;
     }
-    &:hover {
+    &:not([disabled]):hover {
       transform: scale(1.05);
       background-color: ${lighten(0.1, cssVariables.colorPrimaryDark)};
       .icon-bg {
         fill: ${lighten(0.1, cssVariables.colorPrimaryDark)};
       }
     }
-    &:active {
+    &:not([disabled]):active {
       transform: scale(0.95);
     }
 
