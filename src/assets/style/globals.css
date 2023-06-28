@@ -6,6 +6,7 @@
   --color-primary-dark: #030e21;
   --color-matrix: #00FF41;
   --color-border: #202637;
+  --color-input: #0c162d;
 }
 
 @media (prefers-color-scheme: dark) {

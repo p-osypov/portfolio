@@ -5,7 +5,7 @@ export const Component = styled.i`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 0;
+  top: -20px;
   left: 50%;
   transform: translateX(-50%);
   i {

@@ -35,13 +35,13 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
   };
 
   const onEnterPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && !!value) {
       event.preventDefault(); // prevent the default action (form submission)
       void sendMessage(value);
     }
   };
 
-  const onClickSendBtn = () => void sendMessage(value);
+  const onClickSendBtn = () => !!value && void sendMessage(value);
 
   const onClickCleanDB = () => {
     setConversation(

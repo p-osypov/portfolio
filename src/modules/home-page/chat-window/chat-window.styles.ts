@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import IconSend from '@/assets/icons/jsx/icon-send';
 import IconCleanDB from '@/assets/icons/jsx/icon-clean-db';
-
+import cssVariables from '@/assets/style/variables';
+import { lighten } from 'polished';
 export const Component = {
   Container: styled.div`
     display: flex;
@@ -22,49 +23,22 @@ export const Component = {
     flex-wrap: wrap;
     justify-content: flex-end;
     position: absolute;
-    bottom: 0;
+    bottom: var(--spacing);
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
     max-width: 768px;
     padding: 0 var(--spacing);
   `,
-  BtnCleanDB: styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 36px;
-    width: 36px;
-    cursor: pointer;
-    background-color: var(--color-primary-dark);
-    border: 1px solid var(--color-border);
-    border-radius: 5px;
-    transition: 0.1s;
-    &[disabled] {
-      cursor: not-allowed;
-      opacity: 0.5;
-    }
-    &:hover {
-      transform: scale(1.05);
-      background-color: lighten(var(--color-primary-dark), 5%);
-      #icon-clean-db-bg {
-        fill: lighten(var(--color-primary-dark), 5%);
-      }
-    }
-    &:active {
-      transform: scale(0.95);
-    }
-  `,
-  BtnCleanDBIcon: styled(IconCleanDB)`
-    display: block;
-    height: 90%;
-    width: 90%;
-  `,
   ChatHistory: styled.div`
     max-width: 768px;
     margin: 0 auto;
     overflow: auto;
     flex: 1 1 auto;
+    background-color: ${lighten(0.05, cssVariables.colorPrimaryDark)};
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: calc(var(--spacing) * 2);
   `,
   ChatMessage: styled.p<{ $isUser: boolean }>`
     display: flex;
@@ -106,10 +80,15 @@ export const Component = {
     max-width: 768px;
     margin: 0 auto;
     position: relative;
+    .btn {
+      position: absolute;
+      right: var(--spacing);
+      top: 6px;
+    }
   `,
   Input: styled.textarea`
     display: block;
-    background-color: #0c162d;
+    background-color: var(--color-input);
     border: 1px solid var(--color-border);
     border-radius: 6px;
     padding: calc(var(--spacing) * 2);
@@ -121,35 +100,5 @@ export const Component = {
     &::-webkit-input-placeholder {
       color: #8193b2;
     }
-  `,
-  BtnSubmit: styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: var(--spacing);
-    top: 6px;
-    height: 36px;
-    width: 36px;
-    cursor: pointer;
-    background-color: var(--color-primary-dark);
-    border: 1px solid var(--color-border);
-    border-radius: 5px;
-    transition: 0.1s;
-    &:hover {
-      transform: scale(1.05);
-      background-color: lighten(var(--color-primary-dark), 5%);
-      #icon-send-bg {
-        fill: lighten(var(--color-primary-dark), 5%);
-      }
-    }
-    &:active {
-      transform: scale(0.95);
-    }
-  `,
-  BtnSubmitIcon: styled(IconSend)`
-    display: block;
-    height: 90%;
-    width: 90%;
   `,
 };
