@@ -8,5 +8,6 @@ type TUseChatWindowLogic = {
   chatHistoryRef: React.useRef<HTMLDivElement> | null;
   conversation: TConversation;
   onEnterPress: (event: React.KeyboardEvent<HTMLTextAreaElement>) => void;
+  onClickSendBtn: () => void;
   showConversationLoading: boolean;
 };

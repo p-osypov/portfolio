@@ -36,6 +36,9 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
     }
   };
 
+  const onClickSendBtn = () => {
+    void sendMessage(value);
+  };
   useEffect(() => {
     inputRef.current?.focus();
     setConversation(JSON.parse(localStorage.getItem('conversation') || '[]'));
@@ -62,6 +65,7 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
     onInput,
     conversation,
     onEnterPress,
+    onClickSendBtn,
     showConversationLoading,
     chatHistoryRef,
   };

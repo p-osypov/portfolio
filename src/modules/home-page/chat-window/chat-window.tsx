@@ -9,6 +9,7 @@ function ChatWindow() {
     onInput,
     conversation,
     onEnterPress,
+    onClickSendBtn,
     showConversationLoading,
     chatHistoryRef,
   } = useChatWindowLogic();
@@ -42,6 +43,9 @@ function ChatWindow() {
             rows={1}
             ref={inputRef}
           />
+          <Component.BtnSubmit onClick={onClickSendBtn}>
+            <Component.BtnSubmitIcon />
+          </Component.BtnSubmit>
         </Component.InputContainer>
       </Component.ChatUserContainer>
     </Component.Container>

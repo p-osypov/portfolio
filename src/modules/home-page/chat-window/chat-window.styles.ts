@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import IconSend from '@/assets/icons/jsx/icon-send';
 
 export const Component = {
   Container: styled.div`
@@ -46,21 +47,24 @@ export const Component = {
     left: 0;
     padding: calc(var(--spacing) * 2);
     display: flex;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    flex-shrink: 0;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
     gap: var(--spacing);
   `,
   InputContainer: styled.div`
     width: 100%;
     flex: 100%;
     max-height: max-content;
+    max-width: 768px;
+    margin: 0 auto;
+    position: relative;
   `,
   Input: styled.textarea`
     display: block;
     background-color: #0c162d;
-    border: 1px solid #202637;
+    border: 1px solid var(--color-border);
     border-radius: 6px;
     padding: calc(var(--spacing) * 2);
     line-height: 1;
@@ -68,10 +72,38 @@ export const Component = {
     width: 100%;
     max-height: 112px;
     resize: none;
-    max-width: 768px;
-    margin: 0 auto;
     &::-webkit-input-placeholder {
       color: #8193b2;
     }
+  `,
+  BtnSubmit: styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 7px;
+    top: 6px;
+    height: 36px;
+    width: 36px;
+    cursor: pointer;
+    background-color: var(--color-primary-dark);
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    transition: 0.1s;
+    &:hover {
+      transform: scale(1.05);
+      background-color: lighten(var(--color-primary-dark), 5%);
+      & #icon-send-bg {
+        fill: lighten(var(--color-primary-dark), 5%);
+      }
+    }
+    &:active {
+      transform: scale(0.95);
+    }
+  `,
+  BtnSubmitIcon: styled(IconSend)`
+    display: block;
+    height: 90%;
+    width: 90%;
   `,
 };

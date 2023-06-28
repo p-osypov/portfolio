@@ -3,8 +3,9 @@
   --border-radius: 12px;
   --font-mono: 'Source Code Pro', monospace;
   --spacing: 8px;
-
+  --color-primary-dark: #030e21;
   --color-matrix: #00FF41;
+  --color-border: #202637;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,7 +27,7 @@ body {
 
 body {
   color: rgb(255, 255, 255);
-  background: #030e21;
+  background: var(--color-primary-dark);
 }
 
 a {
