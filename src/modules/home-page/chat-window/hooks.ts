@@ -1,7 +1,8 @@
-import React, { KeyboardEventHandler, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TUseChatWindowLogic } from '@/modules/home-page/chat-window/types';
 import axios from 'axios';
 import { TConversation, TMessage } from '@/server/types';
+import locStorage, { LOC_STORAGE_KEYS } from '@/utils/local-storage';
 
 export const useChatWindowLogic = (): TUseChatWindowLogic => {
   const [value, setValue] = useState('');
@@ -10,6 +11,7 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
   const [conversation, setConversation] = useState<TConversation>([]);
   const [showConversationLoading, setShowConversationLoading] =
     useState<boolean>(false);
+
   const onInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value);
   };
@@ -23,7 +25,10 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
     const { data } = await axios.post('/api/gpt', { conversation: reqData });
     setConversation((prevState) => {
       const newConversation = [...prevState, data];
-      localStorage.setItem('conversation', JSON.stringify(newConversation));
+      locStorage.set<TConversation>(
+        LOC_STORAGE_KEYS.conversation,
+        newConversation
+      );
       return newConversation;
     });
     setShowConversationLoading(false);
@@ -36,12 +41,19 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
     }
   };
 
-  const onClickSendBtn = () => {
-    void sendMessage(value);
+  const onClickSendBtn = () => void sendMessage(value);
+
+  const onClickCleanDB = () => {
+    setConversation(
+      locStorage.set<TConversation>(LOC_STORAGE_KEYS.conversation, [])
+    );
   };
+
   useEffect(() => {
     inputRef.current?.focus();
-    setConversation(JSON.parse(localStorage.getItem('conversation') || '[]'));
+    setConversation(
+      locStorage.get<TConversation>(LOC_STORAGE_KEYS.conversation, [])
+    );
   }, []);
 
   useEffect(() => {
@@ -66,6 +78,7 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
     conversation,
     onEnterPress,
     onClickSendBtn,
+    onClickCleanDB,
     showConversationLoading,
     chatHistoryRef,
   };

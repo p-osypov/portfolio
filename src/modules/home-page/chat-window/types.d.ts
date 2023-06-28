@@ -9,5 +9,6 @@ type TUseChatWindowLogic = {
   conversation: TConversation;
   onEnterPress: (event: React.KeyboardEvent<HTMLTextAreaElement>) => void;
   onClickSendBtn: () => void;
+  onClickCleanDB: () => void;
   showConversationLoading: boolean;
 };

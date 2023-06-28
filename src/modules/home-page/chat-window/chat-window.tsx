@@ -1,6 +1,7 @@
 import { Component } from './chat-window.styles';
 import { useChatWindowLogic } from '@/modules/home-page/chat-window/hooks';
 import Loading from '@/components/loading';
+import { isEmpty } from '@/utils/data';
 
 function ChatWindow() {
   const {
@@ -10,12 +11,13 @@ function ChatWindow() {
     conversation,
     onEnterPress,
     onClickSendBtn,
+    onClickCleanDB,
     showConversationLoading,
     chatHistoryRef,
   } = useChatWindowLogic();
   return (
     <Component.Container>
-      <Component.CharAIContainer>
+      <Component.ChatAIContainer>
         <Component.ChatHistory ref={chatHistoryRef}>
           {conversation.map(({ role, content }, index) => {
             return (
@@ -31,7 +33,17 @@ function ChatWindow() {
             );
           })}
         </Component.ChatHistory>
-      </Component.CharAIContainer>
+        <Component.ChatAIControls>
+          {!isEmpty(conversation) && (
+            <Component.BtnCleanDB
+              onClick={onClickCleanDB}
+              disabled={showConversationLoading}
+            >
+              <Component.BtnCleanDBIcon />
+            </Component.BtnCleanDB>
+          )}
+        </Component.ChatAIControls>
+      </Component.ChatAIContainer>
       <Component.ChatUserContainer>
         {showConversationLoading && <Loading />}
         <Component.InputContainer>
