@@ -16,8 +16,8 @@ function Home() {
         />
       </Head>
       <Component.Main>
-        {systemIsReady && <StartScreen onClickButton={onClickPowerButton} />}
-        {!systemIsReady && <ChatWindow />}
+        {!systemIsReady && <StartScreen onClickButton={onClickPowerButton} />}
+        {systemIsReady && <ChatWindow />}
       </Component.Main>
     </>
   );
