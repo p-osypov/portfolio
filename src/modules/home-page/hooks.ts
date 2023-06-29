@@ -9,7 +9,7 @@ export const useHomePageLogic = (): TUseHomePageLogic => {
     setTimeout(() => {
       // Finish all animations before show chat screen
       setSystemIsReady(true);
-    }, 500);
+    }, 1000);
   };
   useEffect(() => {}, [systemIsReady]);
   return { systemIsReady, onClickPowerButton };

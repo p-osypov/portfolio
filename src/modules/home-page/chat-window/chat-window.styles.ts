@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import IconSend from '@/assets/icons/jsx/icon-send';
-import IconCleanDB from '@/assets/icons/jsx/icon-clean-db';
 import cssVariables from '@/assets/style/variables';
 import { lighten } from 'polished';
 export const Component = {
@@ -17,6 +15,7 @@ export const Component = {
     display: flex;
     overflow: hidden;
     position: relative;
+    animation: fadeIn 0.3s ease-in-out;
   `,
   ChatAIControls: styled.div`
     display: flex;
@@ -73,6 +72,7 @@ export const Component = {
     flex-shrink: 0;
     gap: var(--spacing);
     position: relative;
+    animation: fadeIn 0.3s ease-out;
   `,
   InputContainer: styled.div`
     width: 100%;
