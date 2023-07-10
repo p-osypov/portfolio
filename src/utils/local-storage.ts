@@ -16,6 +16,7 @@ const locStorage = {
   remove,
 };
 export enum LOC_STORAGE_KEYS {
+  // eslint-disable-next-line no-unused-vars
   conversation = 'conversation',
 }
 export default locStorage;

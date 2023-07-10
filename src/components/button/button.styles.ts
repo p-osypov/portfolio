@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import IconSend from '@/assets/icons/jsx/icon-send';
-import IconCleanDB from '@/assets/icons/jsx/icon-clean-db';
 import cssVariables from '@/assets/style/variables';
 import { lighten } from 'polished';
 export const Component = {
