@@ -1,6 +1,10 @@
 import { Component } from './chat-window.styles';
 import { useChatWindowLogic } from '@/modules/home-page/chat-window/hooks';
 import Loading from '@/components/loading';
+import { isEmpty } from '@/utils/data';
+import Button from '@/components/button';
+import IconCleanDB from '@/assets/icons/jsx/icon-clean-db';
+import IconSend from '@/assets/icons/jsx/icon-send';
 
 function ChatWindow() {
   const {
@@ -9,12 +13,14 @@ function ChatWindow() {
     onInput,
     conversation,
     onEnterPress,
+    onClickSendBtn,
+    onClickCleanDB,
     showConversationLoading,
     chatHistoryRef,
   } = useChatWindowLogic();
   return (
     <Component.Container>
-      <Component.AvatarContainer>
+      <Component.ChatAIContainer>
         <Component.ChatHistory ref={chatHistoryRef}>
           {conversation.map(({ role, content }, index) => {
             return (
@@ -30,8 +36,19 @@ function ChatWindow() {
             );
           })}
         </Component.ChatHistory>
-      </Component.AvatarContainer>
-      <Component.ChatContainer>
+        <Component.ChatAIControls>
+          {!isEmpty(conversation) && (
+            <Button
+              onClick={onClickCleanDB}
+              disabled={showConversationLoading}
+              className={'btn'}
+            >
+              <IconCleanDB />
+            </Button>
+          )}
+        </Component.ChatAIControls>
+      </Component.ChatAIContainer>
+      <Component.ChatUserContainer>
         {showConversationLoading && <Loading />}
         <Component.InputContainer>
           <Component.Input
@@ -39,10 +56,14 @@ function ChatWindow() {
             value={value}
             onInput={onInput}
             onKeyDown={onEnterPress}
+            rows={1}
             ref={inputRef}
           />
+          <Button onClick={onClickSendBtn} className={'btn'} disabled={!value}>
+            <IconSend />
+          </Button>
         </Component.InputContainer>
-      </Component.ChatContainer>
+      </Component.ChatUserContainer>
     </Component.Container>
   );
 }

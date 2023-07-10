@@ -12,7 +12,7 @@ export async function sendMessageToChatGPT(
   };
 
   const payload = {
-    max_tokens: 100,
+    max_tokens: 500,
     model: 'gpt-3.5-turbo',
     temperature: 0,
     messages,
