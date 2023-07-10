@@ -22,16 +22,24 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
     setConversation((prevState) => [...prevState, userData]);
     setShowConversationLoading(true);
     const reqData = [...conversation, userData];
-    const { data } = await axios.post('/api/gpt', { conversation: reqData });
-    setConversation((prevState) => {
-      const newConversation = [...prevState, data];
-      locStorage.set<TConversation>(
-        LOC_STORAGE_KEYS.conversation,
-        newConversation
-      );
-      return newConversation;
-    });
-    setShowConversationLoading(false);
+
+    try {
+      const { data } = await axios.post('/api/conversation', {
+        conversation: reqData,
+      });
+      setConversation((prevState) => {
+        const newConversation = [...prevState, data];
+        locStorage.set<TConversation>(
+          LOC_STORAGE_KEYS.conversation,
+          newConversation
+        );
+        return newConversation;
+      });
+    } catch (e: any) {
+      console.error(e.message);
+    } finally {
+      setShowConversationLoading(false);
+    }
   };
 
   const onEnterPress: TUseChatWindowLogic['onEnterPress'] = (event) => {
