@@ -12,7 +12,7 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
   const [showConversationLoading, setShowConversationLoading] =
     useState<boolean>(false);
 
-  const onInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const onInput: TUseChatWindowLogic['onInput'] = (e) => {
     setValue(e.target.value);
   };
 
@@ -34,7 +34,7 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
     setShowConversationLoading(false);
   };
 
-  const onEnterPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const onEnterPress: TUseChatWindowLogic['onEnterPress'] = (event) => {
     if (event.key === 'Enter' && !!value) {
       event.preventDefault(); // prevent the default action (form submission)
       void sendMessage(value);

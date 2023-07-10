@@ -17,7 +17,9 @@ export const useStartScreenLogic = ({ onClickButton }: PropsStartScreen) => {
   const onClickStartButton = useCallback(() => {
     setPowerButtonClicked(true);
     onClickButton().then(() => {
-      setSystemStarted(true);
+      setTimeout(() => {
+        setSystemStarted(true);
+      }, 500);
     });
   }, [onClickButton]);
 
