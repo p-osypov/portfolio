@@ -54,7 +54,7 @@ export const Component = {
   ChatMessageRole: styled.span<{ $isUser: boolean }>`
     display: flex;
     align-items: flex-start;
-    color: ${({ $isUser }) => ($isUser ? '#809fff' : 'var(--color-matrix)')};
+    color: var(--color-${({ $isUser }) => ($isUser ? 'user' : 'matrix')});
     text-transform: capitalize;
     flex-basis: 100px;
     min-width: 100px;
@@ -98,6 +98,10 @@ export const Component = {
     width: 100%;
     max-height: 112px;
     resize: none;
+    color: white;
+    &:focus, &:focus-visible{
+      outline-color: var(--color-focus);
+    }
     &::-webkit-input-placeholder {
       color: #8193b2;
     }
