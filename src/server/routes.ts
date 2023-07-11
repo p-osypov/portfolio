@@ -6,13 +6,8 @@ router.post('/api/conversation', async (req: Request, res: Response) => {
   try {
     const response = await sendMessageToChatGPT(req.body.conversation);
     res.status(200).send(response);
-  } catch (error) {
-    if (error instanceof Error) {
-      res.status(500).send({
-        message: error.message,
-        status: 500,
-      });
-    }
+  } catch (error: any) {
+    res.status(error.status).send(error);
   }
 });
 
