@@ -13,9 +13,10 @@
   },
   "homepage": "https://github.com/p-osypov/portfolio#readme",
   "scripts": {
-    "dev": "nodemon --exec ts-node src/server/index.ts",
+    "dev": "nodemon --exec ts-node -r tsconfig-paths/register src/server/index.ts",
     "build": "next build && tsc",
-    "start": "next start",
+    "start": "ts-node -r tsconfig-paths/register src/server/index.ts",
+    "serve": "tsconfig-paths ./dist/server.js",
     "lint": "next lint",
     "env": "direnv allow"
   },
@@ -43,14 +44,15 @@
     "@types/express": "^4.17.17",
     "@types/node": "^20.4.1",
     "@types/styled-components": "^5.1.26",
-    "@typescript-eslint/eslint-plugin": "5.62.0",
+    "@typescript-eslint/eslint-plugin": "6.0.0",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-prettier": "^5.0.0",
     "esm": "^3.2.25",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.0",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.1.6"
   }
 }
