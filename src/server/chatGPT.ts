@@ -3,7 +3,7 @@ import { TConversation } from '@/server/types';
 import { errorHandler } from '@/utils/error-handler';
 
 export async function sendMessageToChatGPT(
-  messages: TConversation
+  messages: TConversation,
 ): Promise<string> {
   const API_URL = 'https://api.openai.com/v1/chat/completions';
   const headers = {

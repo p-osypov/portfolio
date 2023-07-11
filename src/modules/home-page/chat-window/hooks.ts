@@ -31,7 +31,7 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
         const newConversation = [...prevState, data];
         locStorage.set<TConversation>(
           LOC_STORAGE_KEYS.conversation,
-          newConversation
+          newConversation,
         );
         return newConversation;
       });
@@ -53,14 +53,14 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
 
   const onClickCleanDB = () => {
     setConversation(
-      locStorage.set<TConversation>(LOC_STORAGE_KEYS.conversation, [])
+      locStorage.set<TConversation>(LOC_STORAGE_KEYS.conversation, []),
     );
   };
 
   useEffect(() => {
     inputRef.current?.focus();
     setConversation(
-      locStorage.get<TConversation>(LOC_STORAGE_KEYS.conversation, [])
+      locStorage.get<TConversation>(LOC_STORAGE_KEYS.conversation, []),
     );
   }, []);
 

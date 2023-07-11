@@ -99,7 +99,8 @@ export const Component = {
     max-height: 112px;
     resize: none;
     color: white;
-    &:focus, &:focus-visible{
+    &:focus,
+    &:focus-visible {
       outline-color: var(--color-focus);
     }
     &::-webkit-input-placeholder {

@@ -1,5 +1,5 @@
 export const errorHandler = (
-  error: any
+  error: any,
 ): { message: string; status: number } => {
   return {
     message:
