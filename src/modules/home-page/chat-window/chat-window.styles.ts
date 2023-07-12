@@ -18,16 +18,19 @@ export const Component = {
     animation: fadeIn 0.3s ease-in-out;
   `,
   ChatAIControls: styled.div`
+    position: absolute;
+    bottom: var(--spacing);
+    left: 0;
+    width: 100%;
+    padding: 0 calc(var(--spacing) * 2);
+  `,
+  ChatAIControlsInner: styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    position: absolute;
-    bottom: var(--spacing);
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
     max-width: 768px;
     padding: 0 var(--spacing);
+    margin: 0 auto;
   `,
   ChatHistory: styled.div`
     max-width: 768px;
@@ -59,6 +62,10 @@ export const Component = {
     flex-basis: 100px;
     min-width: 100px;
     max-width: 100px;
+  `,
+  ChatMessageText: styled.span`
+    display: block;
+    flex: 1;
   `,
   ChatUserContainer: styled.div`
     height: max-content;
