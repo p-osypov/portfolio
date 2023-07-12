@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import cssVariables from '@/assets/style/variables';
-import { lighten } from 'polished';
 export const Component = {
   Container: styled.div`
     display: flex;
@@ -8,7 +6,7 @@ export const Component = {
     justify-content: space-between;
     height: 100vh;
   `,
-  ChatAIContainer: styled.div`
+  ChatAIContainer: styled.section`
     padding: calc(var(--spacing) * 2);
     padding-bottom: 0;
     flex: 1 1 auto;
@@ -18,26 +16,30 @@ export const Component = {
     animation: fadeIn 0.3s ease-in-out;
   `,
   ChatAIControls: styled.div`
+    position: absolute;
+    bottom: var(--spacing);
+    left: 0;
+    width: 100%;
+    padding: 0 calc(var(--spacing) * 2);
+  `,
+  ChatAIControlsInner: styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    position: absolute;
-    bottom: var(--spacing);
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
     max-width: 768px;
     padding: 0 var(--spacing);
+    margin: 0 auto;
   `,
   ChatHistory: styled.div`
     max-width: 768px;
     margin: 0 auto;
     overflow: auto;
     flex: 1 1 auto;
-    background-color: ${lighten(0.05, cssVariables.colorPrimaryDark)};
+    background-color: var(--color-bg-chat-asistant);
     border: 1px solid var(--color-border);
     border-radius: 6px;
     padding: calc(var(--spacing) * 2);
+    position: relative;
   `,
   ChatMessage: styled.p<{ $isUser: boolean }>`
     display: flex;
@@ -60,7 +62,11 @@ export const Component = {
     min-width: 100px;
     max-width: 100px;
   `,
-  ChatUserContainer: styled.div`
+  ChatMessageText: styled.span`
+    display: block;
+    flex: 1;
+  `,
+  ChatUserContainer: styled.section`
     height: max-content;
     bottom: 0;
     left: 0;
@@ -72,7 +78,7 @@ export const Component = {
     flex-shrink: 0;
     gap: var(--spacing);
     position: relative;
-    animation: fadeIn 0.3s ease-out;
+    animation: fadeIn 0.7s ease-out;
   `,
   InputContainer: styled.div`
     width: 100%;

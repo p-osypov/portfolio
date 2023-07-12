@@ -13,7 +13,8 @@
   },
   "homepage": "https://github.com/p-osypov/portfolio#readme",
   "scripts": {
-    "dev": "nodemon --exec ts-node -r tsconfig-paths/register src/server/index.ts",
+    "dev:custom-server": "nodemon --exec ts-node -r tsconfig-paths/register src/server/index.ts",
+    "dev": "next dev",
     "build": "next build && tsc",
     "start": "ts-node -r tsconfig-paths/register src/server/index.ts",
     "serve": "tsconfig-paths ./dist/server.js",

@@ -5,6 +5,8 @@ import { isEmpty } from '@/utils/data';
 import Button from '@/components/button';
 import IconCleanDB from '@/assets/icons/jsx/icon-clean-db';
 import IconSend from '@/assets/icons/jsx/icon-send';
+import { TypeAnimation } from 'react-type-animation';
+import Legend from '@/modules/home-page/chat-window/legend';
 
 function ChatWindow() {
   const {
@@ -22,7 +24,8 @@ function ChatWindow() {
     <Component.Container>
       <Component.ChatAIContainer>
         <Component.ChatHistory ref={chatHistoryRef}>
-          {conversation.map(({ role, content }, index) => {
+          {!conversation.length && <Legend />}
+          {conversation.map(({ role, content }, index, array) => {
             return (
               <Component.ChatMessage
                 key={`message-${role}-${index}`}
@@ -31,21 +34,33 @@ function ChatWindow() {
                 <Component.ChatMessageRole $isUser={role === 'user'}>
                   {role === 'user' ? 'You' : role}:
                 </Component.ChatMessageRole>
-                {content}
+                <Component.ChatMessageText>
+                  {role === 'assistant' && index === array.length - 1 ? (
+                    <TypeAnimation
+                      sequence={[content]}
+                      speed={30}
+                      cursor={false}
+                    />
+                  ) : (
+                    content
+                  )}
+                </Component.ChatMessageText>
               </Component.ChatMessage>
             );
           })}
         </Component.ChatHistory>
         <Component.ChatAIControls>
-          {!isEmpty(conversation) && (
-            <Button
-              onClick={onClickCleanDB}
-              disabled={showConversationLoading}
-              className={'btn'}
-            >
-              <IconCleanDB />
-            </Button>
-          )}
+          <Component.ChatAIControlsInner>
+            {!isEmpty(conversation) && (
+              <Button
+                onClick={onClickCleanDB}
+                disabled={showConversationLoading}
+                className={'btn'}
+              >
+                <IconCleanDB />
+              </Button>
+            )}
+          </Component.ChatAIControlsInner>
         </Component.ChatAIControls>
       </Component.ChatAIContainer>
       <Component.ChatUserContainer>

@@ -4,20 +4,24 @@
   --font-mono: 'Source Code Pro', monospace;
   --spacing: 8px;
   --color-primary-dark: #030e21;
+  --color-gray: #2f3644;
+  --color-dark-gray: #2c2d30;
   --color-matrix: #00FF41;
   --color-border: #202637;
+  --color-border-white: rgba(255, 255, 255, 0.40);
   --color-input: #0c162d;
   --color-focus: #99C8FF;
   --color-user: #809fff;
+  --color-bg-chat-asistant: rgba(5, 24, 56, 50%);
 }
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: scale(0) translateY(150%);
+    /*transform: scale(0) translateY(150%);*/
   }
   to {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    /*transform: scale(1) translateY(0);*/
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -39,7 +43,11 @@ body {
 
 body {
   color: rgb(255, 255, 255);
-  background: var(--color-primary-dark);
+  background-color: var(--color-primary-dark);
+  background-image: url("../../../public/img/bg-pattern-space.png");
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 300px;
 }
 
 a {
