@@ -34,7 +34,7 @@ export const Component = {
     margin: 0 auto;
     overflow: auto;
     flex: 1 1 auto;
-    background-color: ${lighten(0.05, cssVariables.colorPrimaryDark)};
+    background-color: rgba(5, 24, 56, 50%);
     border: 1px solid var(--color-border);
     border-radius: 6px;
     padding: calc(var(--spacing) * 2);
@@ -72,7 +72,7 @@ export const Component = {
     flex-shrink: 0;
     gap: var(--spacing);
     position: relative;
-    animation: fadeIn 0.3s ease-out;
+    animation: fadeIn 0.7s ease-out;
   `,
   InputContainer: styled.div`
     width: 100%;
