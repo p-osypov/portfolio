@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import cssVariables from '@/assets/style/variables';
-import { lighten } from 'polished';
 export const Component = {
   Container: styled.div`
     display: flex;
