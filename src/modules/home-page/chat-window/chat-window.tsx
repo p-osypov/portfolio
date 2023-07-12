@@ -6,6 +6,7 @@ import Button from '@/components/button';
 import IconCleanDB from '@/assets/icons/jsx/icon-clean-db';
 import IconSend from '@/assets/icons/jsx/icon-send';
 import { TypeAnimation } from 'react-type-animation';
+import Legend from '@/modules/home-page/chat-window/legend';
 
 function ChatWindow() {
   const {
@@ -23,6 +24,7 @@ function ChatWindow() {
     <Component.Container>
       <Component.ChatAIContainer>
         <Component.ChatHistory ref={chatHistoryRef}>
+          {!conversation.length && <Legend />}
           {conversation.map(({ role, content }, index, array) => {
             return (
               <Component.ChatMessage

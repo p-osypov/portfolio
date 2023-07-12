@@ -8,7 +8,7 @@ export const Component = {
     justify-content: space-between;
     height: 100vh;
   `,
-  ChatAIContainer: styled.div`
+  ChatAIContainer: styled.section`
     padding: calc(var(--spacing) * 2);
     padding-bottom: 0;
     flex: 1 1 auto;
@@ -37,10 +37,11 @@ export const Component = {
     margin: 0 auto;
     overflow: auto;
     flex: 1 1 auto;
-    background-color: rgba(5, 24, 56, 50%);
+    background-color: var(--color-bg-chat-asistant);
     border: 1px solid var(--color-border);
     border-radius: 6px;
     padding: calc(var(--spacing) * 2);
+    position: relative;
   `,
   ChatMessage: styled.p<{ $isUser: boolean }>`
     display: flex;
@@ -67,7 +68,7 @@ export const Component = {
     display: block;
     flex: 1;
   `,
-  ChatUserContainer: styled.div`
+  ChatUserContainer: styled.section`
     height: max-content;
     bottom: 0;
     left: 0;
