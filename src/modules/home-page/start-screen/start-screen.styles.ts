@@ -53,7 +53,7 @@ export const Component = {
       left: 0;
       background: linear-gradient(to bottom, transparent, rgb(0, 0, 0))
         rgb(0, 0, 0);
-      transition: ${({ $open }) => ($open ? '0.5s ease-in-out' : 'initial')};
+      transition: ${({ $open }) => ($open ? '0.3s ease-in-out' : 'initial')};
       transition-delay: 0.5s;
     }
     &::before {
@@ -141,6 +141,9 @@ export const Component = {
     margin-top: calc(var(--spacing) * 2);
     & > span::after {
       content: '█' !important;
+    }
+    @media (max-width: 575px) {
+      font-size: 20px;
     }
   `,
 };

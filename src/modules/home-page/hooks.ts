@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { TUseHomePageLogic } from '@/modules/home-page/types';
 
 export const useHomePageLogic = (): TUseHomePageLogic => {
-  const [systemIsReady, setSystemIsReady] = useState(true);
+  const [systemIsReady, setSystemIsReady] = useState(false);
   const onClickPowerButton = async () => {
     setTimeout(() => {
       // Finish all animations before show chat screen
       setSystemIsReady(true);
-    }, 1000);
+    }, 1300);
   };
   useEffect(() => {
     let size = 300;
