@@ -46,6 +46,7 @@ export const Component = {
     align-items: flex-start;
     gap: var(--spacing);
     color: ${({ $isUser }) => ($isUser ? '#c5e0ff' : 'white')};
+    white-space: pre-line;
     &:not(:last-child),
     &:first-child {
       margin-bottom: var(--spacing);
