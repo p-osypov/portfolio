@@ -38,7 +38,7 @@ function ChatWindow() {
                   {role === 'assistant' && index === array.length - 1 ? (
                     <TypeAnimation
                       sequence={[content]}
-                      speed={30}
+                      speed={60}
                       cursor={false}
                     />
                   ) : (

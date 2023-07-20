@@ -4,7 +4,7 @@ export const Component = {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
+    height: 100dvh;
   `,
   ChatAIContainer: styled.section`
     padding: calc(var(--spacing) * 2);
@@ -46,7 +46,10 @@ export const Component = {
     align-items: flex-start;
     gap: var(--spacing);
     color: ${({ $isUser }) => ($isUser ? '#c5e0ff' : 'white')};
-    white-space: pre-line;
+    white-space: pre-wrap;
+    @media (max-width: 575px) {
+      flex-direction: column;
+    }
     &:not(:last-child),
     &:first-child {
       margin-bottom: var(--spacing);
@@ -59,7 +62,6 @@ export const Component = {
     align-items: flex-start;
     color: var(--color-${({ $isUser }) => ($isUser ? 'user' : 'matrix')});
     text-transform: capitalize;
-    flex-basis: 100px;
     min-width: 100px;
     max-width: 100px;
   `,
