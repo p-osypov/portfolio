@@ -10,24 +10,25 @@ export const useHomePageLogic = (): TUseHomePageLogic => {
     }, 1300);
   };
   useEffect(() => {
-    let size = 300;
+    let size = 20;
     let isDecreasing = true;
     setInterval(() => {
       if (isDecreasing) {
-        if (size > 200) {
-          size -= 0.2;
+        if (size > 10) {
+          size -= 0.01;
         } else {
           isDecreasing = false;
         }
       } else {
-        if (size < 300) {
-          size += 0.2;
+        if (size < 20) {
+          size += 0.01;
         } else {
           isDecreasing = true;
         }
       }
-      document.body.style.backgroundSize = `${size}px`;
+      document.body.style.backgroundSize = `${size}%`;
     }, 100);
   }, []);
+
   return { systemIsReady, onClickPowerButton };
 };
