@@ -24,8 +24,19 @@ export const Component = {
         fill: ${lighten(0.1, cssVariables.colorPrimaryDark)};
       }
     }
+
     &:not([disabled]):active {
       transform: scale(0.95);
+    }
+
+    @media (hover: none) {
+      &:not([disabled]):hover {
+        transform: none;
+        background-color: var(--color-primary-dark);
+        .icon-bg {
+          fill: var(--color-primary-dark);
+        }
+      }
     }
 
     .icon {
