@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IconPowerButton = (props: {}) => (
+const IconPowerButton: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     fill="white"
     version="1.1"
