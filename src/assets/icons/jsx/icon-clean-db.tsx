@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IconCleanDB = (props: {}) => (
+const IconCleanDB: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     width="50"
     height="50"
