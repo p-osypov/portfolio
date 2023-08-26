@@ -1,6 +1,7 @@
 import { Component } from './legend.styles';
-import Button from '@/components/button';
 import { useState } from 'react';
+import IconClose from '@/assets/icons/jsx/icon-close';
+
 const data = [
   {
     header: {
@@ -30,15 +31,20 @@ const data = [
       text: 'Need idea what to start with?',
     },
     text: `Just say Hello! =)`,
-    button: 'Done',
+    button: 'Say Hello!',
   },
 ];
-function Legend() {
+
+interface Props {
+  onSubmit: (_content: string) => void;
+}
+function Legend({ onSubmit }: Props) {
   const [legendPageIndex, setLegendPageIndex] = useState(0);
   const [showLegend, setShowLegend] = useState(true);
   const onClickButton = () => {
     if (legendPageIndex === data.length - 1) {
       setShowLegend(false);
+      onSubmit('Hello!');
     } else {
       setLegendPageIndex(legendPageIndex + 1);
     }
@@ -50,15 +56,22 @@ function Legend() {
         <i className="icon">{data[legendPageIndex].header.icon}</i>
         <span className="text">{data[legendPageIndex].header.text}</span>
       </Component.Header>
+      <Component.ButtonClose
+        onClick={() => setShowLegend(false)}
+        height={30}
+        width={30}
+      >
+        <IconClose />
+      </Component.ButtonClose>
       <Component.Content>
         <Component.ContentCard>
           {data[legendPageIndex].text}
         </Component.ContentCard>
       </Component.Content>
       <Component.Footer>
-        <Button width={100} onClick={onClickButton}>
+        <Component.Button width={100} onClick={onClickButton}>
           {data[legendPageIndex].button}
-        </Button>
+        </Component.Button>
       </Component.Footer>
     </Component.Container>
   );
