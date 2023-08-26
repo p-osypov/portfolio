@@ -102,15 +102,17 @@ export const Component = {
     border: 1px solid var(--color-border);
     border-radius: 6px;
     padding: calc(var(--spacing) * 2);
+    padding-right: 45px;
     line-height: 1;
     font-size: 16px;
     width: 100%;
     max-height: 112px;
     resize: none;
     color: white;
+    overflow: hidden;
     &:focus,
     &:focus-visible {
-      outline-color: var(--color-focus);
+      outline: 2px solid var(--color-focus);
     }
     &::-webkit-input-placeholder {
       color: #8193b2;
