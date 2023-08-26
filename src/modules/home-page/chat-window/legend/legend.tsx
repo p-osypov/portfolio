@@ -56,9 +56,9 @@ function Legend() {
         </Component.ContentCard>
       </Component.Content>
       <Component.Footer>
-        <Button width={100} onClick={onClickButton}>
+        <Component.Button width={100} onClick={onClickButton}>
           {data[legendPageIndex].button}
-        </Button>
+        </Component.Button>
       </Component.Footer>
     </Component.Container>
   );

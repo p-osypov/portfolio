@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Button from '@/components/button';
 export const Component = {
   Container: styled.section`
     position: absolute;
@@ -36,5 +37,8 @@ export const Component = {
     justify-content: flex-end;
     padding: calc(var(--spacing) * 2);
     padding-top: 0;
+  `,
+  Button: styled(Button)`
+    color: var(--color-white);
   `,
 };
