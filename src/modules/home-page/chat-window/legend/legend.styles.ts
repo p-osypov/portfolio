@@ -39,6 +39,15 @@ export const Component = {
     padding-top: 0;
   `,
   Button: styled(Button)`
-    color: var(--color-white);
+    color: var(--color-matrix);
+  `,
+  ButtonClose: styled(Button)`
+    position: absolute;
+    top: var(--spacing);
+    right: var(--spacing);
+    .icon {
+      height: 100%;
+      width: 100%;
+    }
   `,
 };

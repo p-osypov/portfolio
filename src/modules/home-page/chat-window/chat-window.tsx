@@ -14,7 +14,9 @@ function ChatWindow() {
     <Component.Container>
       <Component.ChatAIContainer>
         <Component.ChatHistory ref={state.chatHistoryRef}>
-          {!state.conversation.length && <Legend />}
+          {!state.conversation.length && (
+            <Legend onSubmit={state.sendMessage} />
+          )}
           {state.conversation.map(({ role, content }, index, array) => {
             return (
               <Component.ChatMessage

@@ -110,6 +110,7 @@ export const Component = {
     resize: none;
     color: white;
     overflow: hidden;
+    font-family: 'Source Sans Pro', sans-serif;
     &:focus,
     &:focus-visible {
       outline: 2px solid var(--color-focus);

@@ -10,5 +10,6 @@ export type TUseChatWindowLogic = {
   onEnterPress: (_event: React.KeyboardEvent<HTMLTextAreaElement>) => void;
   onClickSendBtn: () => void;
   onClickCleanDB: () => void;
+  sendMessage: (_content: string) => void;
   showConversationLoading: boolean;
 };
