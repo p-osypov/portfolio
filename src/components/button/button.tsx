@@ -6,25 +6,16 @@ export interface ButtonProps
   height?: number;
   width?: number;
   children: React.ReactNode | string;
-  onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
   height,
   width,
   children,
-  onClick,
-  disabled,
   ...props
 }) => {
   return (
-    <Component.Container
-      height={height}
-      width={width}
-      onClick={onClick}
-      disabled={disabled}
-      {...props}
-    >
+    <Component.Container height={height} width={width} {...props}>
       {children}
     </Component.Container>
   );

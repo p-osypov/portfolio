@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IconSend = (props: {}) => (
+const IconSend: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     viewBox="0 0 1150 1150"
     fill="none"

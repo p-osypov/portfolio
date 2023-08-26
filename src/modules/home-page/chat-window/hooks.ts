@@ -87,6 +87,7 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
     onEnterPress,
     onClickSendBtn,
     onClickCleanDB,
+    sendMessage,
     showConversationLoading,
     chatHistoryRef,
   };

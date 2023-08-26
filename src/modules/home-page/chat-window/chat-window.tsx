@@ -9,23 +9,15 @@ import { TypeAnimation } from 'react-type-animation';
 import Legend from '@/modules/home-page/chat-window/legend';
 
 function ChatWindow() {
-  const {
-    value,
-    inputRef,
-    onInput,
-    conversation,
-    onEnterPress,
-    onClickSendBtn,
-    onClickCleanDB,
-    showConversationLoading,
-    chatHistoryRef,
-  } = useChatWindowLogic();
+  const state = useChatWindowLogic();
   return (
     <Component.Container>
       <Component.ChatAIContainer>
-        <Component.ChatHistory ref={chatHistoryRef}>
-          {!conversation.length && <Legend />}
-          {conversation.map(({ role, content }, index, array) => {
+        <Component.ChatHistory ref={state.chatHistoryRef}>
+          {!state.conversation.length && (
+            <Legend onSubmit={state.sendMessage} />
+          )}
+          {state.conversation.map(({ role, content }, index, array) => {
             return (
               <Component.ChatMessage
                 key={`message-${role}-${index}`}
@@ -51,10 +43,10 @@ function ChatWindow() {
         </Component.ChatHistory>
         <Component.ChatAIControls>
           <Component.ChatAIControlsInner>
-            {!isEmpty(conversation) && (
+            {!isEmpty(state.conversation) && (
               <Button
-                onClick={onClickCleanDB}
-                disabled={showConversationLoading}
+                onClick={state.onClickCleanDB}
+                disabled={state.showConversationLoading}
                 className={'btn'}
               >
                 <IconCleanDB />
@@ -63,18 +55,25 @@ function ChatWindow() {
           </Component.ChatAIControlsInner>
         </Component.ChatAIControls>
       </Component.ChatAIContainer>
+
+      {/*-----------------------------*/}
+
       <Component.ChatUserContainer>
-        {showConversationLoading && <Loading />}
+        {state.showConversationLoading && <Loading />}
         <Component.InputContainer>
           <Component.Input
             placeholder="Type your prompt here..."
-            value={value}
-            onInput={onInput}
-            onKeyDown={onEnterPress}
+            value={state.value}
+            onInput={state.onInput}
+            onKeyDown={state.onEnterPress}
             rows={1}
-            ref={inputRef}
+            ref={state.inputRef}
           />
-          <Button onClick={onClickSendBtn} className={'btn'} disabled={!value}>
+          <Button
+            onClick={state.onClickSendBtn}
+            className={'btn'}
+            disabled={!state.value}
+          >
             <IconSend />
           </Button>
         </Component.InputContainer>
