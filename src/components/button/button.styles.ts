@@ -13,6 +13,7 @@ export const Component = {
     border: 1px solid var(--color-border);
     border-radius: 5px;
     overflow: hidden;
+    user-select: none;
     &[disabled] {
       cursor: not-allowed;
       opacity: 0.5;
