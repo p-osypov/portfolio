@@ -41,7 +41,7 @@ export const Component = {
     padding: calc(var(--spacing) * 2);
     position: relative;
   `,
-  ChatMessage: styled.p<{ $isUser: boolean }>`
+  ChatMessage: styled.div<{ $isUser: boolean }>`
     display: flex;
     align-items: flex-start;
     gap: var(--spacing);
@@ -65,7 +65,7 @@ export const Component = {
     min-width: 100px;
     max-width: 100px;
   `,
-  ChatMessageText: styled.span`
+  ChatMessageText: styled.div`
     display: block;
     flex: 1;
   `,
