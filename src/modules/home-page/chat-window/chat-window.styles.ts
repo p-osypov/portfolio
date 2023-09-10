@@ -56,6 +56,13 @@ export const Component = {
       padding-bottom: var(--spacing);
       border-bottom: 1px dashed #bfcfff;
     }
+    ul {
+      padding-left: calc(var(--spacing) * 3);
+    }
+    a {
+      color: var(--color-link);
+      text-decoration: underline;
+    }
   `,
   ChatMessageRole: styled.span<{ $isUser: boolean }>`
     display: flex;
