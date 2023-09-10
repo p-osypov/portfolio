@@ -129,7 +129,7 @@ export const Component = {
     max-height: 112px;
     resize: none;
     color: white;
-    overflow: hidden;
+    overflow: auto;
     font-family: 'Source Sans Pro', sans-serif;
     &:focus,
     &:focus-visible {
