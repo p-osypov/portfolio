@@ -24,7 +24,7 @@ Soft Skills:
 - Innovative thinking and creative problem-solving skills.
 
 Contact Information:
-- Cell: +38 (063) 93 61 961
+- Tel: +38 (063) 93 61 961
 - Email: osypovpavel@gmail.com
 - Skype/Linkedin/Telegram: osypovpavlo
 
