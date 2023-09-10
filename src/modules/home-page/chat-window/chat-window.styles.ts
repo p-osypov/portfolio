@@ -61,7 +61,20 @@ export const Component = {
     }
     a {
       color: var(--color-link);
-      text-decoration: underline;
+      &:hover {
+        color: var(--color-focus);
+        text-decoration: underline;
+      }
+    }
+    table {
+      border-collapse: collapse;
+      border: 1px solid var(--color-border-white);
+      background-color: rgba(0, 0, 0, 0.6);
+      td,
+      th {
+        border: 1px solid var(--color-border-white);
+        padding: 8px;
+      }
     }
   `,
   ChatMessageRole: styled.span<{ $isUser: boolean }>`
@@ -108,7 +121,7 @@ export const Component = {
     background-color: var(--color-input);
     border: 1px solid var(--color-border);
     border-radius: 6px;
-    padding: calc(var(--spacing) * 2);
+    padding: calc(var(--spacing) * 2) calc(var(--spacing) * 1.8);
     padding-right: 45px;
     line-height: 1;
     font-size: 16px;
