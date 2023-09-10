@@ -10,24 +10,26 @@ export const useHomePageLogic = (): TUseHomePageLogic => {
     }, 1300);
   };
   useEffect(() => {
-    let size = 20;
-    let isDecreasing = true;
-    setInterval(() => {
-      if (isDecreasing) {
-        if (size > 10) {
-          size -= 0.01;
+    if (process.env.NODE_ENV === 'production') {
+      let size = 300;
+      let isDecreasing = true;
+      setInterval(() => {
+        if (isDecreasing) {
+          if (size > 200) {
+            size -= 0.1;
+          } else {
+            isDecreasing = false;
+          }
         } else {
-          isDecreasing = false;
+          if (size < 300) {
+            size += 0.1;
+          } else {
+            isDecreasing = true;
+          }
         }
-      } else {
-        if (size < 20) {
-          size += 0.01;
-        } else {
-          isDecreasing = true;
-        }
-      }
-      document.body.style.backgroundSize = `${size}%`;
-    }, 100);
+        document.body.style.backgroundSize = `${size}px`;
+      }, 1000 / 60);
+    }
   }, []);
 
   return { systemIsReady, onClickPowerButton };

@@ -14,6 +14,7 @@ export const Component = {
   `,
   Header: styled.header`
     padding: calc(var(--spacing) * 2);
+    padding-right: calc(var(--spacing) * 5);
     border-bottom: 1px solid var(--color-border-white);
     font-weight: bold;
     display: flex;

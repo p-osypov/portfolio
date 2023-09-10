@@ -35,8 +35,8 @@ const IconClose: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
           y2="41.1476"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="var(--color-matrix)" />
-          <stop offset="1" stop-color="var(--color-user)" stop-opacity="0.7" />
+          <stop stopColor="var(--color-matrix)" />
+          <stop offset="1" stopColor="var(--color-user)" stopOpacity="0.7" />
         </linearGradient>
       </defs>
     </svg>

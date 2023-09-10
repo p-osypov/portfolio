@@ -5,8 +5,16 @@ import { isEmpty } from '@/utils/data';
 import Button from '@/components/button';
 import IconCleanDB from '@/assets/icons/jsx/icon-clean-db';
 import IconSend from '@/assets/icons/jsx/icon-send';
-import { TypeAnimation } from 'react-type-animation';
 import Legend from '@/modules/home-page/chat-window/legend';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
+const LinkRenderer: React.FC<any> = (props) => {
+  if (props.href?.startsWith('javascript:')) {
+    return <span>{props.children}</span>;
+  }
+  return <a href={props.href}>{props.children}</a>;
+};
 
 function ChatWindow() {
   const state = useChatWindowLogic();
@@ -27,15 +35,23 @@ function ChatWindow() {
                   {role === 'user' ? 'You' : role}:
                 </Component.ChatMessageRole>
                 <Component.ChatMessageText>
-                  {role === 'assistant' && index === array.length - 1 ? (
-                    <TypeAnimation
-                      sequence={[content]}
-                      speed={60}
-                      cursor={false}
-                    />
-                  ) : (
-                    content
-                  )}
+                  <ReactMarkdown
+                    // eslint-disable-next-line react/no-children-prop
+                    children={content}
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                      a: LinkRenderer,
+                    }}
+                  />
+                  {/*{role === 'assistant' && index === array.length - 1 ? (*/}
+                  {/*  <TypeAnimation*/}
+                  {/*    sequence={[content]}*/}
+                  {/*    speed={60}*/}
+                  {/*    cursor={false}*/}
+                  {/*  />*/}
+                  {/*) : (*/}
+                  {/*  content*/}
+                  {/*)}*/}
                 </Component.ChatMessageText>
               </Component.ChatMessage>
             );

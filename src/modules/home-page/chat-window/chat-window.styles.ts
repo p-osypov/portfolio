@@ -41,7 +41,7 @@ export const Component = {
     padding: calc(var(--spacing) * 2);
     position: relative;
   `,
-  ChatMessage: styled.p<{ $isUser: boolean }>`
+  ChatMessage: styled.div<{ $isUser: boolean }>`
     display: flex;
     align-items: flex-start;
     gap: var(--spacing);
@@ -56,6 +56,26 @@ export const Component = {
       padding-bottom: var(--spacing);
       border-bottom: 1px dashed #bfcfff;
     }
+    ul {
+      padding-left: calc(var(--spacing) * 3);
+    }
+    a {
+      color: var(--color-link);
+      &:hover {
+        color: var(--color-focus);
+        text-decoration: underline;
+      }
+    }
+    table {
+      border-collapse: collapse;
+      border: 1px solid var(--color-border-white);
+      background-color: rgba(0, 0, 0, 0.6);
+      td,
+      th {
+        border: 1px solid var(--color-border-white);
+        padding: 8px;
+      }
+    }
   `,
   ChatMessageRole: styled.span<{ $isUser: boolean }>`
     display: flex;
@@ -65,7 +85,7 @@ export const Component = {
     min-width: 100px;
     max-width: 100px;
   `,
-  ChatMessageText: styled.span`
+  ChatMessageText: styled.div`
     display: block;
     flex: 1;
   `,
@@ -101,7 +121,7 @@ export const Component = {
     background-color: var(--color-input);
     border: 1px solid var(--color-border);
     border-radius: 6px;
-    padding: calc(var(--spacing) * 2);
+    padding: calc(var(--spacing) * 2) calc(var(--spacing) * 1.8);
     padding-right: 45px;
     line-height: 1;
     font-size: 16px;
