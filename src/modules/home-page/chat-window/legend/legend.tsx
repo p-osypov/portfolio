@@ -6,7 +6,7 @@ const data = [
   {
     header: {
       icon: '🧐',
-      text: 'What it is?',
+      text: 'What is this?',
     },
     text: `This system is based on OpenAI API and knows everything that is related to Pavlo Osypov as a software engineer or a personality.
     You can use this system like Wikipedia and it will provide you with any information you need.`,
