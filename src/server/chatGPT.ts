@@ -31,6 +31,8 @@ Contact Information:
 - Skype: https://join.skype.com/invite/ogxcZsr5OPJc
 - Telegram: https://t.me/osypovpavlo
 - Linkedin: https://www.linkedin.com/in/osypovpavel/
+- GitHub: https://github.com/p-osypov
+- Instagram: https://www.instagram.com/pavlo.osypov/
 ---
 Languages:
 - English: Upper Intermediate
