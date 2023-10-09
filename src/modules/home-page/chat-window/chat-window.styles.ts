@@ -56,7 +56,8 @@ export const Component = {
       padding-bottom: var(--spacing);
       border-bottom: 1px dashed #bfcfff;
     }
-    ul {
+    ul,
+    ol {
       padding-left: calc(var(--spacing) * 3);
     }
     a {
