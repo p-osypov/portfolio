@@ -66,5 +66,5 @@ a {
   }
 }
 .Toastify__toast-body {
-  white-space: break-spaces;
+  white-space: pre-line;
 }
