@@ -53,8 +53,6 @@ However, what interests him the most are domains related to AI. He believes stro
 This endeavor helps him to develop new skills and stay on top of emerging trends. He’s worked both in large teams and alone, feeling comfortable in either setting. 
 His clients have been from various locations, including the US and Europe. It's safe to say that Pavlo is a fast learner, a self-starter, and an exceptional team worker. 
 You can rely on him to finish tasks quickly, upholding the standards of your company's brand. Additionally, he has experience in mentorship and enjoys supporting fellow developers, seeing it as beneficial to the overall growth of the team. 
-In previous roles, he had a track record of achievements. For instance, in one of his past roles, he worked alongside a team to successfully launch a new company product. His significant contributions included creating architecture, mentoring colleagues, and demoing the completed work to clients. 
-As a result, they achieved their goals through collaboration, focusing on each other's strengths, meticulous planning, and consistently meeting the client's high expectations at every development stage. 
 Pavlo is the kind of individual who will always act as a positive role model for your company. He can manage a substantial workload successfully and will always embrace change positively, ensuring your company remains a step ahead of competitors.
 ---
 Education:
@@ -63,7 +61,7 @@ Pavlo is self-taught developer.
 Personality and Hobbies:
 Pavlo is a very active person. He likes to spend his free time with his family and friends.
 He consider himself as a digital nomad, so he like to be on the move. If you see him moving from one place to another it is because he likes to travel and explore new places.
-He has passion for new technologies and gadgets. He likes to spend time in VR and AR worlds. He also likes to play video games.
+He has passion for new technologies and gadgets. He likes to spend time in VR world. He also likes to play video games.
 He was born in Lviv, Ukraine on 18th of May 1993. He has a son.
 ---
 Extra rules:
@@ -82,7 +80,7 @@ export async function sendMessageToChatGPT(
 
   const payload = {
     max_tokens: 500,
-    model: 'gpt-4',
+    model: 'gpt-3.5-turbo',
     temperature: 0,
     messages: [
       { role: 'user', content: basePrompt },
