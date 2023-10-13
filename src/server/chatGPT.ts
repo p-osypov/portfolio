@@ -81,7 +81,7 @@ export async function sendMessageToChatGPT(
   const payload = {
     max_tokens: 500,
     model: 'gpt-3.5-turbo',
-    temperature: 0,
+    temperature: 100,
     messages: [
       { role: 'user', content: basePrompt },
       ...conversation,
@@ -92,7 +92,6 @@ export async function sendMessageToChatGPT(
     const response = await axios.post(API_URL, payload, { headers });
     return response.data.choices[0].message;
   } catch (error: any) {
-    console.info(error);
     return Promise.reject(errorHandler(error));
   }
 }

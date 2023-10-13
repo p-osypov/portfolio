@@ -4,8 +4,8 @@ export const errorHandler = (
   return {
     message:
       error?.response?.data?.error.message ||
-      error?.response?.statusText ||
       error?.message ||
+      error?.response?.statusText ||
       error,
     status: error?.response?.status || 500,
   };
