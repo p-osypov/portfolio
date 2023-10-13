@@ -13,13 +13,13 @@ export const Component = {
     border: 1px solid var(--color-border-white);
   `,
   Header: styled.header`
-    padding: calc(var(--spacing) * 2);
+    padding: var(--spacing-2);
     padding-right: calc(var(--spacing) * 5);
     border-bottom: 1px solid var(--color-border-white);
     font-weight: bold;
     display: flex;
     align-items: center;
-    gap: calc(var(--spacing) * 2);
+    gap: var(--spacing-2);
     font-size: 20px;
     .icon {
       font-style: normal;
@@ -27,7 +27,7 @@ export const Component = {
     }
   `,
   Content: styled.div`
-    padding: calc(var(--spacing) * 2);
+    padding: var(--spacing-2);
   `,
   ContentCard: styled.p`
     line-height: 1.4;
@@ -36,7 +36,7 @@ export const Component = {
   Footer: styled.div`
     display: flex;
     justify-content: flex-end;
-    padding: calc(var(--spacing) * 2);
+    padding: var(--spacing-2);
     padding-top: 0;
   `,
   Button: styled(Button)`

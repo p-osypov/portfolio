@@ -138,7 +138,7 @@ export const Component = {
   Title: styled.h1`
     flex-basis: 100%;
     text-align: center;
-    margin-top: calc(var(--spacing) * 2);
+    margin-top: var(--spacing-2);
     & > span::after {
       content: '█' !important;
     }

@@ -3,6 +3,8 @@
   --border-radius: 12px;
   --font-mono: 'Source Code Pro', monospace;
   --spacing: 8px;
+  --spacing-2: calc(var(--spacing) * 2);
+  --spacing-3: calc(var(--spacing) * 3);
   --color-primary-dark: #030e21;
   --color-gray: #2f3644;
   --color-dark-gray: #2c2d30;
@@ -15,6 +17,7 @@
   --color-bg-chat-asistant: rgba(5, 24, 56, 50%);
   --color-white: #ffffff;
   --color-link: #5ed1e7;
+  --color-bg-markdown: rgba(0,0,0,.5)
 }
 @keyframes fadeIn {
   from {
