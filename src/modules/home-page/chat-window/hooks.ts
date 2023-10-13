@@ -4,7 +4,6 @@ import axios from 'axios';
 import { TConversation, TMessage } from '@/server/types';
 import locStorage, { LOC_STORAGE_KEYS } from '@/utils/local-storage';
 import { toast } from 'react-toastify';
-import { errorHandler } from '@/utils/error-handler';
 
 export const useChatWindowLogic = (): TUseChatWindowLogic => {
   const [value, setValue] = useState('');
@@ -38,7 +37,7 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
         return newConversation;
       });
     } catch (e) {
-      toast.error(`Something went wrong. \nPlease try again later.`);
+      toast.error(`Something went wrong.\n Please try again later.`);
     } finally {
       setShowConversationLoading(false);
     }
