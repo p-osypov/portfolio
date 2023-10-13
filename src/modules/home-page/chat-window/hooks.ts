@@ -3,6 +3,7 @@ import { TUseChatWindowLogic } from '@/modules/home-page/chat-window/types';
 import axios from 'axios';
 import { TConversation, TMessage } from '@/server/types';
 import locStorage, { LOC_STORAGE_KEYS } from '@/utils/local-storage';
+import { toast } from 'react-toastify';
 
 export const useChatWindowLogic = (): TUseChatWindowLogic => {
   const [value, setValue] = useState('');
@@ -36,7 +37,7 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
         return newConversation;
       });
     } catch (e: any) {
-      console.error(e.message);
+      toast.error(e.message);
     } finally {
       setShowConversationLoading(false);
     }
