@@ -26,7 +26,7 @@ Soft Skills:
 - Innovative thinking and creative problem-solving skills.
 ---
 Contact Information:
-- Phone: +48 786 114 783
+- Phone: +48 786 114 783 Always return it as a link in markdown format.
 - Email: osypovpavel@gmail.com
 - Skype: https://join.skype.com/invite/ogxcZsr5OPJc
 - Telegram: https://t.me/osypovpavlo
@@ -82,7 +82,7 @@ export async function sendMessageToChatGPT(
 
   const payload = {
     max_tokens: 500,
-    model: 'gpt-3.5-turbo',
+    model: 'gpt-4',
     temperature: 0,
     messages: [
       { role: 'user', content: basePrompt },
