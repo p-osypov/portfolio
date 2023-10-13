@@ -19,7 +19,7 @@ function ChatWindow() {
           {!state.conversation.length && (
             <Legend onSubmit={state.sendMessage} />
           )}
-          {state.conversation.map(({ role, content }, index, array) => {
+          {state.conversation.map(({ role, content }, index) => {
             return (
               <Component.ChatMessage
                 key={`message-${role}-${index}`}
