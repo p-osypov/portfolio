@@ -7,7 +7,7 @@ export const Component = {
     height: 100dvh;
   `,
   ChatAIContainer: styled.section`
-    padding: calc(var(--spacing) * 2);
+    padding: var(--spacing-2);
     padding-bottom: 0;
     flex: 1 1 auto;
     display: flex;
@@ -20,7 +20,7 @@ export const Component = {
     bottom: var(--spacing);
     left: 0;
     width: 100%;
-    padding: 0 calc(var(--spacing) * 2);
+    padding: 0 var(--spacing-2);
   `,
   ChatAIControlsInner: styled.div`
     display: flex;
@@ -38,7 +38,7 @@ export const Component = {
     background-color: var(--color-bg-chat-asistant);
     border: 1px solid var(--color-border);
     border-radius: 6px;
-    padding: calc(var(--spacing) * 2);
+    padding: var(--spacing-2) var(--spacing-2) 42px var(--spacing-2);
     position: relative;
   `,
   ChatMessage: styled.div<{ $isUser: boolean }>`
@@ -46,7 +46,6 @@ export const Component = {
     align-items: flex-start;
     gap: var(--spacing);
     color: ${({ $isUser }) => ($isUser ? '#c5e0ff' : 'white')};
-    white-space: pre-wrap;
     @media (max-width: 575px) {
       flex-direction: column;
     }
@@ -55,27 +54,6 @@ export const Component = {
       margin-bottom: var(--spacing);
       padding-bottom: var(--spacing);
       border-bottom: 1px dashed #bfcfff;
-    }
-    ul,
-    ol {
-      padding-left: calc(var(--spacing) * 3);
-    }
-    a {
-      color: var(--color-link);
-      &:hover {
-        color: var(--color-focus);
-        text-decoration: underline;
-      }
-    }
-    table {
-      border-collapse: collapse;
-      border: 1px solid var(--color-border-white);
-      background-color: rgba(0, 0, 0, 0.6);
-      td,
-      th {
-        border: 1px solid var(--color-border-white);
-        padding: 8px;
-      }
     }
   `,
   ChatMessageRole: styled.span<{ $isUser: boolean }>`
@@ -89,12 +67,76 @@ export const Component = {
   ChatMessageText: styled.div`
     display: block;
     flex: 1;
+    max-width: calc(100% - 100px - var(--spacing));
+    @media (max-width: 575px) {
+      max-width: 100%;
+    }
+    ul,
+    ol {
+      padding: var(--spacing) var(--spacing) var(--spacing) var(--spacing-3);
+      list-style-type: square;
+      margin: var(--spacing-2) 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing);
+      background-color: var(--color-bg-markdown);
+      border: 1px solid var(--color-border-white);
+      border-radius: var(--border-radius);
+      li {
+        &::marker {
+          color: var(--color-matrix);
+        }
+      }
+    }
+    a {
+      color: var(--color-link);
+      &:hover {
+        color: var(--color-focus);
+        text-decoration: underline;
+      }
+    }
+    .table-wrapper {
+      overflow-x: auto;
+      max-width: 100%;
+    }
+    table {
+      border-collapse: separate;
+      border: 1px solid var(--color-border-white);
+      background-color: var(--color-bg-markdown);
+      border-radius: var(--border-radius);
+      margin: var(--spacing-2) 0;
+      overflow: hidden;
+      td,
+      th {
+        border: 1px solid var(--color-border-white);
+        padding: var(--spacing);
+      }
+      /* Top-left corner */
+      thead tr:first-child th:first-child {
+        border-top-left-radius: calc(var(--border-radius) - 2px);
+      }
+
+      /* Top-right corner */
+      thead tr:first-child th:last-child {
+        border-top-right-radius: calc(var(--border-radius) - 2px);
+      }
+
+      /* Bottom-left corner */
+      tr:last-child td:first-child {
+        border-bottom-left-radius: calc(var(--border-radius) - 2px);
+      }
+
+      /* Bottom-right corner */
+      tr:last-child td:last-child {
+        border-bottom-right-radius: calc(var(--border-radius) - 2px);
+      }
+    }
   `,
   ChatUserContainer: styled.section`
     height: max-content;
     bottom: 0;
     left: 0;
-    padding: calc(var(--spacing) * 2);
+    padding: var(--spacing-2);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -122,7 +164,7 @@ export const Component = {
     background-color: var(--color-input);
     border: 1px solid var(--color-border);
     border-radius: 6px;
-    padding: calc(var(--spacing) * 2) calc(var(--spacing) * 1.8);
+    padding: var(--spacing-2) calc(var(--spacing) * 1.8);
     padding-right: 45px;
     line-height: 1;
     font-size: 16px;

@@ -94,6 +94,7 @@ export async function sendMessageToChatGPT(
     const response = await axios.post(API_URL, payload, { headers });
     return response.data.choices[0].message;
   } catch (error: any) {
+    console.info(error);
     return Promise.reject(errorHandler(error));
   }
 }
