@@ -1,7 +1,9 @@
-const Table: React.FC<any> = ({ children }) => {
+import { TableHTMLAttributes } from 'react';
+
+const Table = (props: TableHTMLAttributes<HTMLTableElement>): JSX.Element => {
   return (
     <div className="table-wrapper">
-      <table>{children}</table>
+      <table>{props.children}</table>
     </div>
   );
 };

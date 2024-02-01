@@ -1,4 +1,6 @@
-const Link: React.FC<any> = (props) => {
+import { AnchorHTMLAttributes } from 'react';
+
+const Link = (props: AnchorHTMLAttributes<HTMLAnchorElement>): JSX.Element => {
   if (props.href?.startsWith('javascript:')) {
     return <span>{props.children}</span>;
   }
