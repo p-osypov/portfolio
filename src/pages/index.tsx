@@ -6,19 +6,20 @@ import ChatWindow from '@/modules/home-page/chat-window';
 import Footer from '@/components/footer';
 
 function Home() {
-  const { systemIsReady, onClickPowerButton } = useHomePageLogic();
+  const { systemIsReady, onClickPowerButton, bgSpaceSceneRef } =
+    useHomePageLogic();
   return (
     <>
       <Head>
-        <title>Portfolio - Pavlo Osypov, Senior web developer</title>
+        <title>Pavlo Osypov, Senior Software Engineer</title>
         <meta
           name="description"
-          content="Portfolio - Pavlo Osypov, Senior web developer"
+          content="Pavlo Osypov personal web page. Experiance portfolio from experianced engineer."
         />
       </Head>
-      <Component.Main>
-        {!systemIsReady && <StartScreen onClickButton={onClickPowerButton} />}
-        {systemIsReady && <ChatWindow />}
+      <Component.Main ref={bgSpaceSceneRef}>
+        {systemIsReady && <StartScreen onClickButton={onClickPowerButton} />}
+        {!systemIsReady && <ChatWindow />}
       </Component.Main>
       <Footer />
     </>
