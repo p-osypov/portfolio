@@ -18,8 +18,8 @@ function Home() {
         />
       </Head>
       <Component.Main ref={bgSpaceSceneRef}>
-        {systemIsReady && <StartScreen onClickButton={onClickPowerButton} />}
-        {!systemIsReady && <ChatWindow />}
+        {!systemIsReady && <StartScreen onClickButton={onClickPowerButton} />}
+        {systemIsReady && <ChatWindow />}
       </Component.Main>
       <Footer />
     </>
