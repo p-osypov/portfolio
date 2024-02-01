@@ -10,10 +10,10 @@ function Home() {
   return (
     <>
       <Head>
-        <title>Portfolio - Pavlo Osypov, Senior web developer</title>
+        <title>Pavlo Osypov, Senior Software Engineer</title>
         <meta
           name="description"
-          content="Portfolio - Pavlo Osypov, Senior web developer"
+          content="Pavlo Osypov personal web page. Experiance portfolio from experianced engineer."
         />
       </Head>
       <Component.Main>
