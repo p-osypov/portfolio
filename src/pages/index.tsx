@@ -6,7 +6,8 @@ import ChatWindow from '@/modules/home-page/chat-window';
 import Footer from '@/components/footer';
 
 function Home() {
-  const { systemIsReady, onClickPowerButton } = useHomePageLogic();
+  const { systemIsReady, onClickPowerButton, bgSpaceSceneRef } =
+    useHomePageLogic();
   return (
     <>
       <Head>
@@ -16,9 +17,9 @@ function Home() {
           content="Pavlo Osypov personal web page. Experiance portfolio from experianced engineer."
         />
       </Head>
-      <Component.Main>
-        {!systemIsReady && <StartScreen onClickButton={onClickPowerButton} />}
-        {systemIsReady && <ChatWindow />}
+      <Component.Main ref={bgSpaceSceneRef}>
+        {systemIsReady && <StartScreen onClickButton={onClickPowerButton} />}
+        {!systemIsReady && <ChatWindow />}
       </Component.Main>
       <Footer />
     </>
