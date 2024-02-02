@@ -6,8 +6,12 @@ export interface PropsStartScreen {
   onClickButton: () => Promise<void>;
 }
 function StartScreen(props: PropsStartScreen) {
-  const { onClickStartButton, powerButtonClicked, typedText, systemStarted } =
-    useStartScreenLogic(props);
+  const {
+    onClickStartButton,
+    powerButtonClicked,
+    typeAnimationSequence,
+    systemStarted,
+  } = useStartScreenLogic(props);
   return (
     <Component.Container>
       <Component.Gates $open={systemStarted} />
@@ -33,7 +37,11 @@ function StartScreen(props: PropsStartScreen) {
           systemStarted ? 'animate__backOutLeft' : ''
         }`}
       >
-        <TypeAnimation sequence={typedText} cursor={true} repeat={Infinity} />
+        <TypeAnimation
+          sequence={typeAnimationSequence}
+          cursor={true}
+          repeat={Infinity}
+        />
       </Component.Title>
     </Component.Container>
   );

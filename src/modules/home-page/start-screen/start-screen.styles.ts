@@ -135,7 +135,7 @@ export const Component = {
       height: 100%;
     }
   `,
-  Title: styled.h1`
+  Title: styled.p`
     flex-basis: 100%;
     text-align: center;
     margin-top: var(--spacing-2);
@@ -143,7 +143,7 @@ export const Component = {
       content: '█' !important;
     }
     @media (max-width: 575px) {
-      font-size: 20px;
+      font-size: 28px;
     }
   `,
 };

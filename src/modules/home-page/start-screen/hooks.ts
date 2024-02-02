@@ -4,7 +4,7 @@ import { PropsStartScreen } from '@/modules/home-page/start-screen/start-screen'
 export const useStartScreenLogic = ({ onClickButton }: PropsStartScreen) => {
   const [powerButtonClicked, setPowerButtonClicked] = useState<boolean>(false);
   const [systemStarted, setSystemStarted] = useState<boolean>(false);
-  const typedText = [
+  const typeAnimationSequence = [
     'Make',
     1000, // Waits 1s
     'this',
@@ -23,5 +23,5 @@ export const useStartScreenLogic = ({ onClickButton }: PropsStartScreen) => {
     });
   }, [onClickButton]);
 
-  return { powerButtonClicked, typedText, onClickStartButton, systemStarted };
+  return { powerButtonClicked, typeAnimationSequence, onClickStartButton, systemStarted };
 };
