@@ -1,10 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
-import { TUseHomePageLogic } from '@/modules/home-page/types';
+import {
+  TUseHomePageLogicRes,
+  useBGSpaceRes,
+} from '@/modules/home-page/home-page.types';
 import * as THREE from 'three';
 
-export const useHomePageLogic = (): TUseHomePageLogic => {
+export const useHomePageLogic = (): TUseHomePageLogicRes => {
   const [systemIsReady, setSystemIsReady] = useState(false);
-  const bgSpaceSceneRef = useRef<HTMLDivElement | null>(null);
   const onClickPowerButton = async () => {
     setTimeout(() => {
       // Finish all animations before show chat screen
@@ -12,6 +14,11 @@ export const useHomePageLogic = (): TUseHomePageLogic => {
     }, 1300);
   };
 
+  return { systemIsReady, onClickPowerButton };
+};
+
+export const useBGSpace = (): useBGSpaceRes => {
+  const bgSpaceSceneRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     // Direct null check
     if (bgSpaceSceneRef.current === null) return;
@@ -76,5 +83,5 @@ export const useHomePageLogic = (): TUseHomePageLogic => {
       }
     };
   }, []);
-  return { systemIsReady, onClickPowerButton, bgSpaceSceneRef };
+  return { bgSpaceSceneRef };
 };

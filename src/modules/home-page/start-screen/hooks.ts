@@ -23,5 +23,10 @@ export const useStartScreenLogic = ({ onClickButton }: PropsStartScreen) => {
     });
   }, [onClickButton]);
 
-  return { powerButtonClicked, typeAnimationSequence, onClickStartButton, systemStarted };
+  return {
+    powerButtonClicked,
+    typeAnimationSequence,
+    onClickStartButton,
+    systemStarted,
+  };
 };
