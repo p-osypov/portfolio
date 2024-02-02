@@ -48,7 +48,7 @@ body {
 
 body {
   color: rgb(255, 255, 255);
-  background-color: var(--color-primary-dark);
+  background-color: black;
 }
 
 a {

@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { PropsStartScreen } from '@/modules/home-page/start-screen/start-screen';
 
 export const useStartScreenLogic = ({ onClickButton }: PropsStartScreen) => {
@@ -14,14 +14,14 @@ export const useStartScreenLogic = ({ onClickButton }: PropsStartScreen) => {
     '...', // Deletes all the characters
     500, // Waits 0.5s
   ];
-  const onClickStartButton = useCallback(() => {
+  const onClickStartButton = () => {
     setPowerButtonClicked(true);
     onClickButton().then(() => {
       setTimeout(() => {
         setSystemStarted(true);
-      }, 500);
+      }, 500); // Give 0.5sec to finish button launch animation
     });
-  }, [onClickButton]);
+  };
 
   return {
     powerButtonClicked,

@@ -44,29 +44,6 @@ export const Component = {
       left: 55%;
     }
   `,
-  Gates: styled.div<{ $open: boolean }>`
-    &::before,
-    &::after {
-      content: '';
-      position: fixed;
-      z-index: -1;
-      width: 100vw;
-      height: 50vh;
-      left: 0;
-      background: linear-gradient(to bottom, transparent, rgb(0, 0, 0))
-        rgb(0, 0, 0);
-      transition: ${({ $open }) => ($open ? '0.3s ease-in-out' : 'initial')};
-      transition-delay: 0.5s;
-    }
-    &::before {
-      top: 0;
-      transform: translateY(${({ $open }) => ($open ? '-100%' : '0')});
-    }
-    &::after {
-      bottom: 0;
-      transform: translateY(${({ $open }) => ($open ? '100%' : '0')});
-    }
-  `,
   PowerButtonWrapper: styled.div`
     display: flex;
     justify-content: center;
@@ -137,7 +114,7 @@ export const Component = {
       height: 100%;
     }
   `,
-  Title: styled.p`
+  GreetingText: styled.p`
     flex-basis: 100%;
     text-align: center;
     margin-top: var(--spacing-2);
