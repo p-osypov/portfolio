@@ -7,6 +7,8 @@ export const Component = {
     align-content: center;
     justify-content: center;
     min-height: 100vh;
+    position: relative;
+    z-index: 1;
   `,
   Cloud: styled.div`
     position: fixed;
@@ -135,15 +137,16 @@ export const Component = {
       height: 100%;
     }
   `,
-  Title: styled.h1`
+  Title: styled.p`
     flex-basis: 100%;
     text-align: center;
     margin-top: var(--spacing-2);
+    font-size: 34px;
     & > span::after {
       content: '█' !important;
     }
     @media (max-width: 575px) {
-      font-size: 20px;
+      font-size: 28px;
     }
   `,
 };
