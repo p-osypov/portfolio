@@ -51,7 +51,7 @@ varying float vFlashOffset;
 void main() {
     vFlashOffset = flashOffset; // Pass flash offset to fragment shader
     vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-    gl_PointSize = size * (300.0 / -mvPosition.z);
+    gl_PointSize = max(size * (300.0 / -mvPosition.z), 2.0);
     gl_Position = projectionMatrix * mvPosition;
 }
       `,
@@ -81,7 +81,7 @@ void main() {
     const starSizes = new Float32Array(10000);
     const flashOffsets = new Float32Array(10000); // Assuming 10000 stars
     const starVertices = [];
-    for (let i = 0; i < 10000; i++) {
+    for (let i = 0; i < 5000; i++) {
       const x = (Math.random() - 0.5) * 2000;
       const y = (Math.random() - 0.5) * 2000;
       const z = (Math.random() - 0.5) * 2000;
