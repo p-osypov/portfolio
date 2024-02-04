@@ -43,57 +43,68 @@ export const useBGSpace = (): useBGSpaceRes => {
         color: { value: new THREE.Color(0xffffff) },
       },
       vertexShader: `
-        uniform vec3 color;
-attribute float size;
-attribute float flashOffset; // New attribute for flash offset
-varying float vFlashOffset;
-
-void main() {
-    vFlashOffset = flashOffset; // Pass flash offset to fragment shader
-    vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-    gl_PointSize = max(size * (300.0 / -mvPosition.z), 2.0);
-    gl_Position = projectionMatrix * mvPosition;
-}
+        // Removed: uniform vec3 color;
+        attribute float size;
+        attribute float flashOffset; // New attribute for flash offset
+        varying float vFlashOffset;
+        attribute vec3 color; // Correctly declared as an attribute
+        varying vec3 vColor; // Pass color to the fragment shader
+        
+        void main() {
+            vColor = color; // Assign the color to varying
+            vFlashOffset = flashOffset; // Pass flash offset to fragment shader
+            vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+            gl_PointSize = max(size * (300.0 / -mvPosition.z), 2.0);
+            gl_Position = projectionMatrix * mvPosition;
+        }
       `,
       fragmentShader: `
         uniform vec3 color;
-uniform float time;
-varying float vFlashOffset; // Receive the flash offset
-
-void main() {
-    // Transform gl_PointCoord to range -0.5 to 0.5
-    vec2 coord = gl_PointCoord - 0.5;
-    // Calculate the distance from the center in both directions
-    float dist = abs(coord.x) + abs(coord.y);
-    // Create a diamond shape by adjusting the alpha. The closer dist is to 0.5, the more visible the fragment is
-    float alpha = 1.0 - smoothstep(0.45, 0.5, dist); // Smooth edges of the diamond
-
-    // Flashing effect
-    float flash = abs(sin(time + vFlashOffset));
-
-    gl_FragColor = vec4(color * flash, alpha);
-}
+        uniform float time;
+        varying float vFlashOffset; // Receive the flash offset
+        varying vec3 vColor; // Receive the star's color
+        
+        void main() {
+            // Transform gl_PointCoord to range -0.5 to 0.5
+            vec2 coord = gl_PointCoord - 0.5;
+            // Calculate the distance from the center in both directions
+            float dist = abs(coord.x) + abs(coord.y);
+            // Create a diamond shape by adjusting the alpha. The closer dist is to 0.5, the more visible the fragment is
+            float alpha = 1.0 - smoothstep(0.45, 0.5, dist); // Smooth edges of the diamond
+            float flash = abs(sin(time + vFlashOffset));
+            gl_FragColor = vec4(vColor * flash, alpha); // Use vColor here
+        }
       `,
       transparent: true,
       depthTest: false,
       blending: THREE.AdditiveBlending,
     });
-    const starSizes = new Float32Array(10000);
-    const flashOffsets = new Float32Array(10000); // Assuming 10000 stars
+    const starSizes = new Float32Array(5000);
+    const flashOffsets = new Float32Array(5000);
     const starVertices = [];
+    const colors = new Float32Array(5000 * 3); // 3 components (r, g, b) for each star
+
     for (let i = 0; i < 5000; i++) {
       const x = (Math.random() - 0.5) * 2000;
       const y = (Math.random() - 0.5) * 2000;
       const z = (Math.random() - 0.5) * 2000;
       starVertices.push(x, y, z);
-      starSizes[i] = Math.random() * 2 + 1; // Sizes between 1 and 3
+      starSizes[i] = Math.random() * 5 + 1;
       flashOffsets[i] = Math.random() * 2 * Math.PI; // Random phase offset for each star
+      const isCustomColor = Math.random() > 0.6;
+      const color = isCustomColor
+        ? new THREE.Color(0x00ff41)
+        : new THREE.Color(0xffffff);
+      colors[i * 3] = color.r;
+      colors[i * 3 + 1] = color.g;
+      colors[i * 3 + 2] = color.b;
     }
 
     starGeometry.setAttribute(
       'flashOffset',
       new THREE.BufferAttribute(flashOffsets, 1),
     );
+    starGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     starGeometry.setAttribute('size', new THREE.BufferAttribute(starSizes, 1));
     starGeometry.setAttribute(
       'position',
@@ -102,19 +113,31 @@ void main() {
     const stars = new THREE.Points(starGeometry, starMaterial);
     scene.add(stars);
 
-    // Camera position
     camera.position.z = 5;
 
     // Animation loop
     let time = 0;
+
     const animate = function () {
       requestAnimationFrame(animate);
 
       time += 0.05;
       starMaterial.uniforms.time.value = time;
 
-      stars.rotation.x += 0.0005;
-      stars.rotation.y += 0.0005;
+      // Calculate the movement and check positions for each star
+      const positions = starGeometry.attributes.position.array;
+      for (let i = 0; i < positions.length; i += 3) {
+        positions[i + 2] += 5; // Move star along z-axis towards the camera
+
+        // If the star has passed the camera or moved out of the visible area
+        if (positions[i + 2] > 500) {
+          // Reset the star to a new position far away from the camera
+          positions[i] = (Math.random() - 0.5) * 2000; // New random x position
+          positions[i + 1] = (Math.random() - 0.5) * 2000; // New random y position
+          positions[i + 2] = (Math.random() - 0.5) * 2000 - 2500; // New random z position, ensuring it's far away
+        }
+      }
+      starGeometry.attributes.position.needsUpdate = true;
 
       renderer.render(scene, camera);
     };
