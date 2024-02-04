@@ -154,7 +154,7 @@ export const useBGSpace = (): useBGSpaceRes => {
     // Cleanup
     return () => {
       if (bgSpaceSceneRef.current) {
-        bgSpaceSceneRef.current.removeChild(renderer.domElement);
+        bgSpaceSceneRef.current?.removeChild(renderer.domElement);
       }
     };
   }, []);

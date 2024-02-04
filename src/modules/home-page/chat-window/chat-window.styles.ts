@@ -4,7 +4,8 @@ export const Component = {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100dvh;
+    height: 100%;
+    width: 100%;
   `,
   ChatAIContainer: styled.section`
     padding: var(--spacing-2);

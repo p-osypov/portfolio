@@ -12,8 +12,8 @@ export const Component = {
   `,
   Cloud: styled.div`
     position: fixed;
-    height: 100dvh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     &::before,
     &::after {
       content: '';
