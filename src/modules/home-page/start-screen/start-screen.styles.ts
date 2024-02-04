@@ -6,7 +6,7 @@ export const Component = {
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-    min-height: 100vh;
+    height: 100%;
     position: relative;
     z-index: 1;
   `,
