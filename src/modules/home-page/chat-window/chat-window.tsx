@@ -1,5 +1,5 @@
-import { Component } from './chat-window.styles';
-import { useChatWindowLogic } from '@/modules/home-page/chat-window/hooks';
+import { SC } from './chat-window.styles';
+import { useChatWindowLogic } from '@/modules/home-page/chat-window/chat-window.hooks';
 import Loading from '@/components/loading';
 import { isEmpty } from '@/utils/data';
 import Button from '@/components/button';
@@ -11,73 +11,82 @@ import remarkGfm from 'remark-gfm';
 import * as markdownComponents from './markdown-components';
 
 function ChatWindow() {
-  const state = useChatWindowLogic();
+  const {
+    inputValue,
+    inputRef,
+    onInput,
+    conversation,
+    onEnterPress,
+    onClickSendBtn,
+    onClickCleanDB,
+    sendMessage,
+    showConversationLoading,
+    chatHistoryRef,
+  } = useChatWindowLogic();
   return (
-    <Component.Container>
-      <Component.ChatAIContainer>
-        <Component.ChatHistory ref={state.chatHistoryRef}>
-          {!state.conversation.length && (
-            <Legend onSubmit={state.sendMessage} />
-          )}
-          {state.conversation.map(({ role, content }, index) => {
+    <SC.Container>
+      <SC.ChatAIContainer>
+        <SC.ChatHistory ref={chatHistoryRef}>
+          {!conversation.length && <Legend onSubmit={sendMessage} />}
+          {conversation.map(({ role, content }, index) => {
             return (
-              <Component.ChatMessage
+              <SC.ChatMessage
                 key={`message-${role}-${index}`}
                 $isUser={role === 'user'}
               >
-                <Component.ChatMessageRole $isUser={role === 'user'}>
+                <SC.ChatMessageRole $isUser={role === 'user'}>
                   {role === 'user' ? 'You' : role}:
-                </Component.ChatMessageRole>
-                <Component.ChatMessageText>
+                </SC.ChatMessageRole>
+                <SC.ChatMessageText>
                   <ReactMarkdown
                     // eslint-disable-next-line react/no-children-prop
                     children={content}
                     remarkPlugins={[remarkGfm]}
                     components={markdownComponents}
                   />
-                </Component.ChatMessageText>
-              </Component.ChatMessage>
+                </SC.ChatMessageText>
+              </SC.ChatMessage>
             );
           })}
-        </Component.ChatHistory>
-        <Component.ChatAIControls>
-          <Component.ChatAIControlsInner>
-            {!isEmpty(state.conversation) && (
+        </SC.ChatHistory>
+        <SC.ChatAIControls>
+          <SC.ChatAIControlsInner>
+            {!isEmpty(conversation) && (
               <Button
-                onClick={state.onClickCleanDB}
-                disabled={state.showConversationLoading}
+                onClick={onClickCleanDB}
+                disabled={showConversationLoading}
                 className={'btn'}
               >
                 <IconCleanDB />
               </Button>
             )}
-          </Component.ChatAIControlsInner>
-        </Component.ChatAIControls>
-      </Component.ChatAIContainer>
+          </SC.ChatAIControlsInner>
+        </SC.ChatAIControls>
+      </SC.ChatAIContainer>
 
       {/*-----------------------------*/}
 
-      <Component.ChatUserContainer>
-        {state.showConversationLoading && <Loading />}
-        <Component.InputContainer>
-          <Component.Input
+      <SC.ChatUserContainer>
+        {showConversationLoading && <Loading />}
+        <SC.InputContainer>
+          <SC.Input
             placeholder="Type your prompt here..."
-            value={state.value}
-            onInput={state.onInput}
-            onKeyDown={state.onEnterPress}
+            value={inputValue}
+            onInput={onInput}
+            onKeyDown={onEnterPress}
             rows={1}
-            ref={state.inputRef}
+            ref={inputRef}
           />
           <Button
-            onClick={state.onClickSendBtn}
+            onClick={onClickSendBtn}
             className={'btn'}
-            disabled={!state.value}
+            disabled={!inputValue}
           >
             <IconSend />
           </Button>
-        </Component.InputContainer>
-      </Component.ChatUserContainer>
-    </Component.Container>
+        </SC.InputContainer>
+      </SC.ChatUserContainer>
+    </SC.Container>
   );
 }
 export default ChatWindow;
