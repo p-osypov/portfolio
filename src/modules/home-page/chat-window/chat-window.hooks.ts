@@ -1,25 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { TUseChatWindowLogic } from '@/modules/home-page/chat-window/types';
+import { TUseChatWindowLogic } from '@/modules/home-page/chat-window/chat-windows.types';
 import axios from 'axios';
 import { TConversation, TMessage } from '@/server/types';
-import locStorage, { LOC_STORAGE_KEYS } from '@/utils/local-storage';
 import { toast } from 'react-toastify';
+import {
+  LOC_STORAGE_KEYS,
+  useLocalStorageContext,
+} from '@/context/local-storage';
 
 export const useChatWindowLogic = (): TUseChatWindowLogic => {
-  const [value, setValue] = useState('');
+  const ls = useLocalStorageContext();
+  const [inputValue, setInputValue] = useState('');
   const inputRef = React.useRef<HTMLTextAreaElement>(null);
   const chatHistoryRef = React.useRef<HTMLDivElement>(null);
-  const [conversation, setConversation] = useState<TConversation>([]);
+  const [conversation, setConversation] = useState<TConversation>(() =>
+    ls.get<TMessage[]>(LOC_STORAGE_KEYS.conversation, []),
+  );
   const [showConversationLoading, setShowConversationLoading] =
     useState<boolean>(false);
 
   const onInput: TUseChatWindowLogic['onInput'] = (e) => {
-    setValue(e.target.value);
+    setInputValue(e.target.value);
   };
 
   const sendMessage = async (content: string) => {
     const userData: TMessage = { role: 'user', content };
-    setValue(() => '');
+    setInputValue(() => '');
     setConversation((prevState) => [...prevState, userData]);
     setShowConversationLoading(true);
     const reqData = [...conversation, userData];
@@ -30,11 +36,10 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
       });
       setConversation((prevState) => {
         const newConversation = [...prevState, data];
-        locStorage.set<TConversation>(
+        return ls.set<TConversation>(
           LOC_STORAGE_KEYS.conversation,
           newConversation,
         );
-        return newConversation;
       });
     } catch (e) {
       toast.error(`Something went wrong.\n Please try again later.`);
@@ -44,25 +49,20 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
   };
 
   const onEnterPress: TUseChatWindowLogic['onEnterPress'] = (event) => {
-    if (event.key === 'Enter' && !!value) {
+    if (event.key === 'Enter' && !!inputValue) {
       event.preventDefault(); // prevent the default action (form submission)
-      void sendMessage(value);
+      void sendMessage(inputValue);
     }
   };
 
-  const onClickSendBtn = () => !!value && void sendMessage(value);
+  const onClickSendBtn = () => !!inputValue && void sendMessage(inputValue);
 
   const onClickCleanDB = () => {
-    setConversation(
-      locStorage.set<TConversation>(LOC_STORAGE_KEYS.conversation, []),
-    );
+    setConversation(ls.set<TConversation>(LOC_STORAGE_KEYS.conversation, []));
   };
 
   useEffect(() => {
     inputRef.current?.focus();
-    setConversation(
-      locStorage.get<TConversation>(LOC_STORAGE_KEYS.conversation, []),
-    );
   }, []);
 
   useEffect(() => {
@@ -79,9 +79,10 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
       inputRef.current.style.height = 'auto';
       inputRef.current.style.height = `${inputRef.current.scrollHeight}px`;
     }
-  }, [value]);
+  }, [inputValue]);
+
   return {
-    value,
+    inputValue,
     inputRef,
     onInput,
     conversation,
