@@ -4,17 +4,31 @@ import {
   useBGSpaceRes,
 } from '@/modules/home-page/home-page.types';
 import * as THREE from 'three';
+import { DELAY_BEFORE_ACTIVATE_SYSTEM } from '@/constants/configs';
+import {
+  LOC_STORAGE_KEYS,
+  useLocalStorageContext,
+} from '@/context/local-storage';
 
-export const useHomePageLogic = (): TUseHomePageLogicRes => {
-  const [systemIsActivated, setSystemIsActivated] = useState(false);
+export const useSystemActivator = (): TUseHomePageLogicRes => {
+  const { systemIsActivated, ...ls } = useLocalStorageContext();
+  /* This will prevent a case of blinked button while local storage updating */
+  const [jsStackIsFinished, setJsStackIsFinished] = useState<boolean>(false);
   const onClickPowerButton = async () => {
     setTimeout(() => {
       // Finish all animations before show chat screen
-      setSystemIsActivated(true);
-    }, 1300);
+      ls.set<boolean>(LOC_STORAGE_KEYS.systemIsActivated, true);
+    }, DELAY_BEFORE_ACTIVATE_SYSTEM);
   };
 
-  return { systemIsActivated, onClickPowerButton };
+  useEffect(() => {
+    setTimeout(() => {
+      setJsStackIsFinished(true);
+      console.log('This runs after the current call stack is cleared.');
+    }, 0);
+  }, []);
+
+  return { systemIsActivated, onClickPowerButton, jsStackIsFinished };
 };
 
 export const useBGSpace = (): useBGSpaceRes => {

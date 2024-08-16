@@ -1,0 +1,1 @@
+export const DELAY_BEFORE_ACTIVATE_SYSTEM = 1500;
