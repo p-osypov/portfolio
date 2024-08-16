@@ -19,6 +19,8 @@
     "start": "ts-node -r tsconfig-paths/register src/server/index.ts",
     "serve": "tsconfig-paths ./dist/server.js",
     "lint": "next lint",
+    "prettier": "prettier --write **/*.{js,ts,tsx,css,json}",
+    "prettier:check": "prettier --check **/*.{js,ts,tsx,css,json}",
     "env": "direnv allow"
   },
   "dependencies": {
