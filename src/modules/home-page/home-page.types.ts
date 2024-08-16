@@ -1,6 +1,6 @@
 import { LegacyRef } from 'react';
 export type TUseHomePageLogicRes = {
-  systemIsReady: boolean;
+  systemIsActivated: boolean;
   onClickPowerButton: () => Promise<void>;
 };
 

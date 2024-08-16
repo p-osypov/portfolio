@@ -1,16 +1,8 @@
 import Head from 'next/head';
-import { Component } from '@/modules/home-page/home-page.styles';
-import StartScreen from '@/modules/home-page/start-screen';
-import {
-  useBGSpace,
-  useHomePageLogic,
-} from '@/modules/home-page/home-page.hooks';
-import ChatWindow from '@/modules/home-page/chat-window';
 import Footer from '@/components/footer';
+import HomePageBody from '@/modules/home-page';
 
 function Home() {
-  const { systemIsReady, onClickPowerButton } = useHomePageLogic();
-  const { bgSpaceSceneRef } = useBGSpace();
   return (
     <>
       <Head>
@@ -20,10 +12,7 @@ function Home() {
           content="Pavlo Osypov personal web page. Experiance portfolio from experianced engineer."
         />
       </Head>
-      <Component.Main ref={bgSpaceSceneRef}>
-        {!systemIsReady && <StartScreen onClickButton={onClickPowerButton} />}
-        {systemIsReady && <ChatWindow />}
-      </Component.Main>
+      <HomePageBody />
       <Footer />
     </>
   );

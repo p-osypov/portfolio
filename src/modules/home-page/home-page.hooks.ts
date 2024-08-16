@@ -6,15 +6,15 @@ import {
 import * as THREE from 'three';
 
 export const useHomePageLogic = (): TUseHomePageLogicRes => {
-  const [systemIsReady, setSystemIsReady] = useState(false);
+  const [systemIsActivated, setSystemIsActivated] = useState(false);
   const onClickPowerButton = async () => {
     setTimeout(() => {
       // Finish all animations before show chat screen
-      setSystemIsReady(true);
+      setSystemIsActivated(true);
     }, 1300);
   };
 
-  return { systemIsReady, onClickPowerButton };
+  return { systemIsActivated, onClickPowerButton };
 };
 
 export const useBGSpace = (): useBGSpaceRes => {
