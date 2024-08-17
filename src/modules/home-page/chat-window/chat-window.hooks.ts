@@ -77,7 +77,7 @@ export const useChatWindowLogic = (): TUseChatWindowLogic => {
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.style.height = 'auto';
-      inputRef.current.style.height = `${inputRef.current.scrollHeight}px`;
+      inputRef.current.style.height = `${inputRef.current.scrollHeight + 2}px`;
     }
   }, [inputValue]);
 
