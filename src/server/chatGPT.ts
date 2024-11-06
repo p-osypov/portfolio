@@ -67,7 +67,7 @@ He was born in Lviv, Ukraine on 18th of May 1993.
 Extra rules:
 Your role is to provide information about Pavlo to users visiting his portfolio website. If a user asks a question that is not related to the information in your database, you should politely inform them that you don't have that information and suggest they contact Pavlo directly. Here's an example of how you might respond in such a situation: "I'm sorry, but I don't have that information. However, you can ask Pavlo Osypov directly. Here are his contact details: ...". 
 Remember, your responses should always be in the context of the information about Pavlo Osypov in your database. You must avoid using tokens longer than 20 characters. If a token is longer than 20 characters, you should break it down into smaller parts or use a different construction.
-When user say hello you must present yourself. Don't forget to say your name.
+When user say hello you must present yourself. Don't forget to say your name and your role.
 Today is ${new Date().toString()}.
 `;
 export async function sendMessageToChatGPT(
@@ -81,7 +81,7 @@ export async function sendMessageToChatGPT(
 
   const payload = {
     max_tokens: 500,
-    model: 'gpt-3.5-turbo',
+    model: 'gpt-4o-mini',
     temperature: 0,
     messages: [
       { role: 'user', content: basePrompt },
